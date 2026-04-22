@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainers Management - GetFit Online Fitness Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ── Modal Form Professional Styling ── */
+        .modal-container {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            animation: modalIn 0.25s ease;
+        }
+        @keyframes modalIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to   { transform: translateY(0);     opacity: 1; }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid #f0f0f0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 16px 16px 0 0;
+        }
+        .modal-header h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: rgba(255,255,255,0.35); }
+        .modal-body { padding: 2rem; }
+
+        /* Two-column form grid */
+        .modal-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.5rem;
+        }
+        .modal-form-grid .form-group.full-width { grid-column: 1 / -1; }
+        .modal-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .modal-form-group label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .modal-form-group label i { color: #667eea; }
+        .modal-form-group input,
+        .modal-form-group select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #333;
+            background: #fafafa;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            font-family: inherit;
+            width: 100%;
+        }
+        .modal-form-group input:focus,
+        .modal-form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.15);
+        }
+        .modal-form-group input::placeholder { color: #bbb; }
+        .modal-form-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 2px solid #f0f0f0;
+        }
+        .modal-form-actions .btn {
+            padding: 0.7rem 1.8rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .modal-form-actions .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .modal-form-actions .btn-save {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+        }
+        .modal-form-actions .btn-cancel {
+            background: #f1f1f1;
+            color: #555;
+        }
+
+        /* Status badge inactive */
+        .status-badge.inactive { background: #fde8e8; color: #e53e3e; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GetFit</span>
+            </div>
+            <div class="system-name">
+                <h1>Admin Dashboard</h1>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-members.html">
+                            <i class="fas fa-users"></i>
+                            Members
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-trainers.html">
+                            <i class="fas fa-user-tie"></i>
+                            Trainers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-memberships.html">
+                            <i class="fas fa-id-card"></i>
+                            Memberships
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <section class="trainers-management">
+                <div class="section-header">
+                    <div class="header-left-content">
+                        <h2>Trainer Management</h2>
+                    </div>
+                    <div class="header-right-content">
+                        <button class="btn btn-primary" onclick="openAddTrainerModal()">
+                            <i class="fas fa-plus"></i>
+                            Add New Trainer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="trainers-overview">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="stat-content">
+                                <h3>Total Trainers</h3>
+                                <p class="stat-number">28</p>
+                                <span class="stat-change positive">+5 this month</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="stat-content">
+                                <h3>Active Trainers</h3>
+                                <p class="stat-number">24</p>
+                                <span class="stat-change positive">+3 this month</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-ban"></i></div>
+                            <div class="stat-content">
+                                <h3>Inactive Trainers</h3>
+                                <p class="stat-number">4</p>
+                                <span class="stat-change neutral">On leave</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="stat-content">
+                                <h3>New Trainers</h3>
+                                <p class="stat-number">5</p>
+                                <span class="stat-change positive">+18% growth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="filter-section admin-trainers">
+                    <div class="filter-cards">
+                        <div class="filter-card">
+                            <h4>Search Trainers</h4>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="trainerSearch" class="form-control" placeholder="Search by name, email or specialization...">
+                            </div>
+                        </div>
+                        <div class="filter-card">
+                            <h4>Filter by Status</h4>
+                            <select id="trainerStatusFilter" class="form-control">
+                                <option value="">All Trainers</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trainers Table -->
+                <div class="trainers-table-container admin-trainers">
+                    <div class="table-container">
+                        <table class="trainers-table" id="trainersTable">
+                            <thead>
+                                <tr>
+                                    <th>Trainer ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Specialization</th>
+                                    <th>Assigned Members</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trainersTableBody">
+                                <tr>
+                                    <td>T001</td>
+                                    <td>Alex Johnson</td>
+                                    <td>alex@email.com</td>
+                                    <td>+1 234-567-8910</td>
+                                    <td>Strength Training</td>
+                                    <td>15</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T001','Alex Johnson','alex@email.com','+1 234-567-8910','Strength Training','Active')" title="Edit"><i class="fas fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>T002</td>
+                                    <td>Sarah Mitchell</td>
+                                    <td>sarah@email.com</td>
+                                    <td>+1 234-567-8911</td>
+                                    <td>Yoga &amp; Flexibility</td>
+                                    <td>12</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T002','Sarah Mitchell','sarah@email.com','+1 234-567-8911','Yoga &amp; Flexibility','Active')" title="Edit"><i class="fas fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>T003</td>
+                                    <td>James Wilson</td>
+                                    <td>james@email.com</td>
+                                    <td>+1 234-567-8912</td>
+                                    <td>Cardio &amp; HIIT</td>
+                                    <td>18</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T003','James Wilson','james@email.com','+1 234-567-8912','Cardio &amp; HIIT','Active')" title="Edit"><i class="fas fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>T004</td>
+                                    <td>Emma Davis</td>
+                                    <td>emma@email.com</td>
+                                    <td>+1 234-567-8913</td>
+                                    <td>Nutrition &amp; Diet</td>
+                                    <td>8</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T004','Emma Davis','emma@email.com','+1 234-567-8913','Nutrition &amp; Diet','Active')" title="Edit"><i class="fas fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>T005</td>
+                                    <td>Michael Brown</td>
+                                    <td>michael@email.com</td>
+                                    <td>+1 234-567-8914</td>
+                                    <td>Personal Training</td>
+                                    <td>0</td>
+                                    <td><span class="status-badge inactive">Inactive</span></td>
+                                    <td>
+                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T005','Michael Brown','michael@email.com','+1 234-567-8914','Personal Training','Inactive')" title="Edit"><i class="fas fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p id="noTrainersMsg" style="display:none; text-align:center; padding:2rem; color:#999;">No trainers match your search.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalContainer" class="modal-container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"><i class="fas fa-user-tie"></i> Trainer</h3>
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // ── Modal ──
+        function openModal(title, content) {
+            document.getElementById('modalTitle').innerHTML = title;
+            document.getElementById('modalBody').innerHTML = content;
+            document.getElementById('modalContainer').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('modalContainer').style.display = 'none';
+        }
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('modalContainer')) closeModal();
+        });
+
+        // ── Add Trainer Modal ──
+        function openAddTrainerModal() {
+            openModal('<i class="fas fa-user-plus"></i> Add New Trainer', `
+                <div class="modal-form-grid">
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="addName" placeholder="e.g. John Smith">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="addEmail" placeholder="trainer@email.com">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-phone"></i> Phone</label>
+                        <input type="tel" id="addPhone" placeholder="+1 234-567-8900">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-dumbbell"></i> Specialization</label>
+                        <input type="text" id="addSpec" placeholder="e.g. Strength Training">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="addPassword" placeholder="Set login password">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-toggle-on"></i> Status</label>
+                        <select id="addStatus">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-form-actions">
+                    <button class="btn btn-cancel" onclick="closeModal()"><i class="fas fa-times"></i> Cancel</button>
+                    <button class="btn btn-save" onclick="saveNewTrainer()"><i class="fas fa-save"></i> Save Trainer</button>
+                </div>
+            `);
+        }
+
+        // ── Edit Trainer Modal — receives the clicked button so we can update the row later ──
+        var _editRow = null; // stores the table row being edited
+
+        function openEditTrainerModal(btn, id, name, email, phone, spec, status) {
+            _editRow = btn.closest('tr'); // remember which row to update on save
+            openModal('<i class="fas fa-pen"></i> Edit Trainer', `
+                <div class="modal-form-grid">
+                    <div class="modal-form-group full-width">
+                        <label><i class="fas fa-id-badge"></i> Trainer ID</label>
+                        <input type="text" value="${id}" disabled style="background:#f0f0f0; color:#888; cursor:not-allowed;">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="editName" value="${name}">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="editEmail" value="${email}">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-phone"></i> Phone</label>
+                        <input type="tel" id="editPhone" value="${phone}">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-dumbbell"></i> Specialization</label>
+                        <input type="text" id="editSpec" value="${spec}">
+                    </div>
+                    <div class="modal-form-group">
+                        <label><i class="fas fa-toggle-on"></i> Status</label>
+                        <select id="editStatus">
+                            <option value="Active" ${status === 'Active' ? 'selected' : ''}>Active</option>
+                            <option value="Inactive" ${status === 'Inactive' ? 'selected' : ''}>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-form-actions">
+                    <button class="btn btn-cancel" onclick="closeModal()"><i class="fas fa-times"></i> Cancel</button>
+                    <button class="btn btn-save" onclick="saveEditTrainer()"><i class="fas fa-save"></i> Save Changes</button>
+                </div>
+            `);
+        }
+
+        function saveNewTrainer() {
+            var name = document.getElementById('addName').value.trim();
+            if (!name) { alert('Please enter the trainer name.'); return; }
+            alert('Trainer "' + name + '" added successfully!');
+            closeModal();
+        }
+
+        function saveEditTrainer() {
+            var name   = document.getElementById('editName').value.trim();
+            var email  = document.getElementById('editEmail').value.trim();
+            var phone  = document.getElementById('editPhone').value.trim();
+            var spec   = document.getElementById('editSpec').value.trim();
+            var status = document.getElementById('editStatus').value;
+
+            if (!name) { alert('Trainer name cannot be empty.'); return; }
+
+            if (_editRow) {
+                // Update all editable cells in the row
+                _editRow.cells[1].textContent = name;
+                _editRow.cells[2].textContent = email;
+                _editRow.cells[3].textContent = phone;
+                _editRow.cells[4].textContent = spec;
+
+                // Update the status badge (cell 6)
+                var badgeClass = status.toLowerCase(); // 'active' or 'inactive'
+                _editRow.cells[6].innerHTML = '<span class="status-badge ' + badgeClass + '">' + status + '</span>';
+
+                // Update the edit button's onclick so future edits use updated values
+                var btn = _editRow.querySelector('.table-action-btn');
+                var id  = _editRow.cells[0].textContent;
+                btn.setAttribute('onclick',
+                    'openEditTrainerModal(this,\'' + id + '\',\'' + name + '\',\'' + email + '\',\'' + phone + '\',\'' + spec + '\',\'' + status + '\')');
+            }
+
+            closeModal();
+        }
+
+        // ── Search & Filter — FIXED: uses exact match (===) not .includes() ──
+        function filterTrainersTable() {
+            var searchVal = document.getElementById('trainerSearch').value.toLowerCase().trim();
+            var statusVal = document.getElementById('trainerStatusFilter').value.toLowerCase();
+            var rows = document.querySelectorAll('#trainersTableBody tr');
+            var visibleCount = 0;
+
+            rows.forEach(function(row) {
+                var name   = row.cells[1].textContent.toLowerCase();
+                var email  = row.cells[2].textContent.toLowerCase();
+                var spec   = row.cells[4].textContent.toLowerCase();
+                // Trim and get exact status text e.g. "active" or "inactive"
+                var status = row.cells[6].textContent.toLowerCase().trim();
+
+                var matchSearch = !searchVal || name.includes(searchVal) || email.includes(searchVal) || spec.includes(searchVal);
+                // FIXED: exact match so "inactive" does NOT match when filtering "active"
+                var matchStatus = !statusVal || status === statusVal;
+
+                if (matchSearch && matchStatus) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            document.getElementById('noTrainersMsg').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        document.getElementById('trainerSearch').addEventListener('input', filterTrainersTable);
+        document.getElementById('trainerStatusFilter').addEventListener('change', filterTrainersTable);
+    </script>
+</body>
+</html>

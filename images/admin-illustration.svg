@@ -1,0 +1,79 @@
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="200" fill="#f8f9fa"/>
+  
+  <!-- Dashboard screen -->
+  <rect x="20" y="30" width="140" height="90" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+  
+  <!-- Dashboard header -->
+  <rect x="20" y="30" width="140" height="20" fill="#1976d2" rx="5"/>
+  <circle cx="35" cy="40" r="3" fill="white"/>
+  <circle cx="45" cy="40" r="3" fill="white"/>
+  <circle cx="55" cy="40" r="3" fill="white"/>
+  
+  <!-- Chart bars -->
+  <rect x="35" y="65" width="12" height="25" fill="#4caf50"/>
+  <rect x="52" y="55" width="12" height="35" fill="#2196f3"/>
+  <rect x="69" y="60" width="12" height="30" fill="#ff9800"/>
+  <rect x="86" y="50" width="12" height="40" fill="#9c27b0"/>
+  <rect x="103" y="58" width="12" height="32" fill="#f44336"/>
+  <rect x="120" y="62" width="12" height="28" fill="#00bcd4"/>
+  
+  <!-- Line chart -->
+  <polyline points="35,100 50,90 65,95 80,85 95,88 110,82 125,85 140,80" 
+            fill="none" stroke="#ff5722" stroke-width="2"/>
+  <circle cx="35" cy="100" r="2" fill="#ff5722"/>
+  <circle cx="50" cy="90" r="2" fill="#ff5722"/>
+  <circle cx="65" cy="95" r="2" fill="#ff5722"/>
+  <circle cx="80" cy="85" r="2" fill="#ff5722"/>
+  <circle cx="95" cy="88" r="2" fill="#ff5722"/>
+  <circle cx="110" cy="82" r="2" fill="#ff5722"/>
+  <circle cx="125" cy="85" r="2" fill="#ff5722"/>
+  <circle cx="140" cy="80" r="2" fill="#ff5722"/>
+  
+  <!-- Person in formal wear -->
+  <g transform="translate(200, 60)">
+    <!-- Head -->
+    <circle cx="0" cy="0" r="12" fill="#fdbcb4"/>
+    <!-- Hair -->
+    <path d="M-12 -5 Q-12 -15 0 -15 Q12 -15 12 -5" fill="#333"/>
+    <!-- Face features -->
+    <circle cx="-4" cy="-2" r="1" fill="#333"/>
+    <circle cx="4" cy="-2" r="1" fill="#333"/>
+    <path d="M-3 3 Q0 5 3 3" fill="none" stroke="#333" stroke-width="1"/>
+    
+    <!-- Body (suit) -->
+    <path d="M-15 12 Q-15 8 -12 8 L-8 8 L-8 25 L-5 45 L5 45 L8 25 L8 8 L12 8 Q15 8 15 12 L15 35 L12 50 L-12 50 L-15 35 Z" fill="#1a237e"/>
+    
+    <!-- Shirt and tie -->
+    <rect x="-3" y="8" width="6" height="20" fill="white"/>
+    <path d="M-2 8 L0 25 L2 8 Z" fill="#d32f2f"/>
+    
+    <!-- Arms -->
+    <path d="M-12 10 L-20 15 L-18 25 L-15 20" fill="#1a237e"/>
+    <path d="M12 10 L25 8 L28 15 L25 18 L15 15" fill="#1a237e"/>
+    
+    <!-- Hand pointing -->
+    <circle cx="28" cy="15" r="3" fill="#fdbcb4"/>
+    <rect x="28" y="14" width="8" height="2" fill="#fdbcb4"/>
+    
+    <!-- Legs -->
+    <rect x="-8" y="45" width="6" height="25" fill="#1a237e"/>
+    <rect x="2" y="45" width="6" height="25" fill="#1a237e"/>
+    
+    <!-- Shoes -->
+    <ellipse cx="-5" cy="72" rx="4" ry="2" fill="#333"/>
+    <ellipse cx="5" cy="72" rx="4" ry="2" fill="#333"/>
+  </g>
+  
+  <!-- Pointing line from hand to dashboard -->
+  <line x1="228" y1="75" x2="160" y2="60" stroke="#ff5722" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Settings gear icon -->
+  <g transform="translate(250, 150)">
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#667eea" stroke-width="2"/>
+    <circle cx="0" cy="0" r="6" fill="#667eea"/>
+    <path d="M0 -15 L0 -10 M0 10 L0 15 M-15 0 L-10 0 M10 0 L15 0 M-10 -10 L-7 -7 M7 7 L10 10 M10 -10 L7 -7 M-7 7 L-10 10" 
+          stroke="#667eea" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Management - GetFit Online Fitness Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GetFit</span>
+            </div>
+            <div class="system-name">
+                <h1>Admin Dashboard</h1>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-members.html">
+                            <i class="fas fa-users"></i>
+                            Members
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-trainers.html">
+                            <i class="fas fa-user-tie"></i>
+                            Trainers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-memberships.html">
+                            <i class="fas fa-id-card"></i>
+                            Memberships
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Members Management -->
+            <section class="members-management ">
+                <div class="section-header">
+                    <h2>Members List</h2>
+                </div>
+                
+                <div class="members-overview">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Total Members</h3>
+                                <p class="stat-number">156</p>
+                                <span class="stat-change positive">+12 this month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Active Members</h3>
+                                <p class="stat-number">142</p>
+                                <span class="stat-change positive">+8 this month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Pending Approval</h3>
+                                <p class="stat-number">8</p>
+                                <span class="stat-change neutral">Awaiting review</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>New This Month</h3>
+                                <p class="stat-number">24</p>
+                                <span class="stat-change positive">+15% growth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section admin-members">
+                    <div class="filter-cards">
+                        <div class="filter-card">
+                            <h4>Search Members</h4>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="memberSearch" class="form-control" placeholder="Search by name, email or duration...">
+                            </div>
+                        </div>
+                        <div class="filter-card">
+                            <h4>Filter by Duration</h4>
+                            <select id="memberTypeFilter" class="form-control">
+                                <option value="">All Members</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Members Table -->
+                <div class="members-table-container admin-members">
+                    <div class="table-container">
+                        <table class="members-table" id="membersTable">
+                            <thead>
+                                <tr>
+                                    <th>Member ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="membersTableBody">
+                                <tr>
+                                    <td>M001</td>
+                                    <td>John Doe</td>
+                                    <td>john@email.com</td>
+                                    <td>+1 234-567-8900</td>
+                                    <td>Yearly</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'John Doe')" title="Approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'John Doe')" title="Reject"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>M002</td>
+                                    <td>Jane Smith</td>
+                                    <td>jane@email.com</td>
+                                    <td>+1 234-567-8901</td>
+                                    <td>Monthly</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Jane Smith')" title="Approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Jane Smith')" title="Reject"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>M003</td>
+                                    <td>Mike Johnson</td>
+                                    <td>mike@email.com</td>
+                                    <td>+1 234-567-8902</td>
+                                    <td>Quarterly</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Mike Johnson')" title="Approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Mike Johnson')" title="Reject"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>M004</td>
+                                    <td>Sarah Wilson</td>
+                                    <td>sarah@email.com</td>
+                                    <td>+1 234-567-8903</td>
+                                    <td>Yearly</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Sarah Wilson')" title="Approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Sarah Wilson')" title="Reject"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>M005</td>
+                                    <td>Tom Brown</td>
+                                    <td>tom.brown@email.com</td>
+                                    <td>+1 234-567-8905</td>
+                                    <td>Monthly</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Tom Brown')" title="Approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Tom Brown')" title="Reject"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p id="noMembersMsg" style="display:none; text-align:center; padding:2rem; color:#999;">No members match your search.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer" class="modal-container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal
+        function openModal(title, content) {
+            document.getElementById('modalTitle').innerHTML = title;
+            document.getElementById('modalBody').innerHTML = content;
+            document.getElementById('modalContainer').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('modalContainer').style.display = 'none';
+        }
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('modalContainer')) closeModal();
+        });
+
+        // Approve member — updates the status badge in the row to Active
+        function approveMember(btn, name) {
+            var row = btn.closest('tr');
+            var statusCell = row.cells[5];
+            var currentStatus = statusCell.querySelector('.status-badge').textContent.trim();
+            if (currentStatus === 'Active') {
+                alert(name + ' is already Active.');
+                return;
+            }
+            if (confirm('Approve membership for ' + name + '?')) {
+                statusCell.innerHTML = '<span class="status-badge active">Active</span>';
+            }
+        }
+
+        // Reject member — updates the status badge in the row to Rejected
+        function rejectMember(btn, name) {
+            var row = btn.closest('tr');
+            var statusCell = row.cells[5];
+            var currentStatus = statusCell.querySelector('.status-badge').textContent.trim();
+            if (currentStatus === 'Rejected') {
+                alert(name + ' has already been rejected.');
+                return;
+            }
+            if (confirm('Reject membership for ' + name + '? This will mark them as rejected.')) {
+                statusCell.innerHTML = '<span class="status-badge expired" style="background:#fde8e8; color:#e53e3e;">Rejected</span>';
+            }
+        }
+
+        // Search & Filter — now filters by Duration column (col index 4)
+        function filterMembersTable() {
+            var searchVal   = document.getElementById('memberSearch').value.toLowerCase().trim();
+            var durationVal = document.getElementById('memberTypeFilter').value.toLowerCase();
+            var rows = document.querySelectorAll('#membersTableBody tr');
+            var visible = 0;
+
+            rows.forEach(function(row) {
+                var name     = row.cells[1].textContent.toLowerCase();
+                var email    = row.cells[2].textContent.toLowerCase();
+                var duration = row.cells[4].textContent.toLowerCase();
+
+                var matchSearch   = !searchVal   || name.includes(searchVal) || email.includes(searchVal) || duration.includes(searchVal);
+                var matchDuration = !durationVal || duration.includes(durationVal);
+
+                if (matchSearch && matchDuration) {
+                    row.style.display = '';
+                    visible++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            document.getElementById('noMembersMsg').style.display = visible === 0 ? 'block' : 'none';
+        }
+
+        document.getElementById('memberSearch').addEventListener('input', filterMembersTable);
+        document.getElementById('memberTypeFilter').addEventListener('change', filterMembersTable);
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="200" fill="#f8f9fa"/>
+  
+  <!-- Phone/tablet with workout plans -->
+  <rect x="180" y="50" width="90" height="120" fill="#e8f5e8" stroke="#4caf50" stroke-width="2" rx="8"/>
+  <rect x="185" y="60" width="80" height="100" fill="white"/>
+  
+  <!-- Workout plan content -->
+  <rect x="190" y="70" width="70" height="8" fill="#4caf50" opacity="0.7" rx="2"/>
+  <rect x="190" y="82" width="60" height="6" fill="#81c784" opacity="0.5" rx="1"/>
+  <rect x="190" y="92" width="65" height="6" fill="#81c784" opacity="0.5" rx="1"/>
+  
+  <!-- Calendar section -->
+  <rect x="190" y="105" width="70" height="40" fill="#e3f2fd" rx="3"/>
+  <text x="225" y="120" font-family="Arial" font-size="8" text-anchor="middle" fill="#1976d2">WORKOUT</text>
+  <text x="225" y="130" font-family="Arial" font-size="6" text-anchor="middle" fill="#666">CALENDAR</text>
+  
+  <!-- Calendar grid -->
+  <rect x="195" y="135" width="8" height="6" fill="#4caf50" opacity="0.6"/>
+  <rect x="205" y="135" width="8" height="6" fill="#4caf50" opacity="0.8"/>
+  <rect x="215" y="135" width="8" height="6" fill="#4caf50" opacity="0.4"/>
+  <rect x="225" y="135" width="8" height="6" fill="#4caf50" opacity="0.7"/>
+  <rect x="235" y="135" width="8" height="6" fill="#4caf50" opacity="0.5"/>
+  <rect x="245" y="135" width="8" height="6" fill="#4caf50" opacity="0.6"/>
+  
+  <!-- Male trainer -->
+  <g transform="translate(60, 80)">
+    <!-- Head -->
+    <circle cx="0" cy="0" r="10" fill="#fdbcb4"/>
+    <!-- Hair -->
+    <path d="M-10 -3 Q-10 -12 0 -12 Q10 -12 10 -3" fill="#333"/>
+    <!-- Face -->
+    <circle cx="-3" cy="-1" r="1" fill="#333"/>
+    <circle cx="3" cy="-1" r="1" fill="#333"/>
+    <path d="M-2 2 Q0 4 2 2" fill="none" stroke="#333" stroke-width="0.8"/>
+    
+    <!-- Body (green shirt) -->
+    <path d="M-12 10 Q-12 8 -10 8 L-6 8 L-6 25 L-4 40 L4 40 L6 25 L6 8 L10 8 Q12 8 12 10 L12 35 L8 45 L-8 45 L-12 35 Z" fill="#4caf50"/>
+    
+    <!-- Arms -->
+    <path d="M-10 10 L-15 15 L-12 25 L-8 20" fill="#4caf50"/>
+    <path d="M10 10 L18 12 L20 20 L15 18 L12 15" fill="#4caf50"/>
+    
+    <!-- Legs -->
+    <rect x="-6" y="40" width="5" height="20" fill="#333"/>
+    <rect x="1" y="40" width="5" height="20" fill="#333"/>
+    
+    <!-- Shoes -->
+    <ellipse cx="-3" cy="62" rx="3" ry="2" fill="#666"/>
+    <ellipse cx="3" cy="62" rx="3" ry="2" fill="#666"/>
+  </g>
+  
+  <!-- Female trainer -->
+  <g transform="translate(120, 85)">
+    <!-- Head -->
+    <circle cx="0" cy="0" r="9" fill="#fdbcb4"/>
+    <!-- Hair (long) -->
+    <path d="M-9 -2 Q-9 -11 0 -11 Q9 -11 9 -2 L9 8 Q9 12 5 12 L-5 12 Q-9 12 -9 8 Z" fill="#8b4513"/>
+    <!-- Face -->
+    <circle cx="-2" cy="-1" r="1" fill="#333"/>
+    <circle cx="2" cy="-1" r="1" fill="#333"/>
+    <path d="M-2 2 Q0 3 2 2" fill="none" stroke="#333" stroke-width="0.8"/>
+    
+    <!-- Body (pink top) -->
+    <path d="M-10 8 Q-10 6 -8 6 L-5 6 L-5 22 L-3 35 L3 35 L5 22 L5 6 L8 6 Q10 6 10 8 L10 30 L7 40 L-7 40 L-10 30 Z" fill="#ff69b4"/>
+    
+    <!-- Arms -->
+    <path d="M-8 8 L-12 12 L-10 20 L-6 16" fill="#ff69b4"/>
+    <path d="M8 8 L14 10 L16 18 L12 15 L10 12" fill="#ff69b4"/>
+    
+    <!-- Legs -->
+    <rect x="-5" y="35" width="4" height="18" fill="#333"/>
+    <rect x="1" y="35" width="4" height="18" fill="#333"/>
+    
+    <!-- Shoes -->
+    <ellipse cx="-3" cy="55" rx="3" ry="2" fill="#666"/>
+    <ellipse cx="3" cy="55" rx="3" ry="2" fill="#666"/>
+  </g>
+  
+  <!-- Stopwatch icon -->
+  <g transform="translate(40, 40)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#4caf50" stroke-width="2"/>
+    <circle cx="0" cy="0" r="2" fill="#4caf50"/>
+    <!-- Stopwatch hands -->
+    <line x1="0" y1="0" x2="0" y2="-6" stroke="#4caf50" stroke-width="2"/>
+    <line x1="0" y1="0" x2="4" y2="2" stroke="#4caf50" stroke-width="1.5"/>
+    <!-- Top button -->
+    <rect x="-2" y="-15" width="4" height="3" fill="#4caf50" rx="1"/>
+  </g>
+  
+  <!-- Leaf icon -->
+  <g transform="translate(250, 160)">
+    <path d="M0 0 Q8 -8 12 -4 Q8 0 0 4 Q-8 0 -12 -4 Q-8 -8 0 0" fill="#4caf50"/>
+    <line x1="0" y1="0" x2="0" y2="4" stroke="#2e7d32" stroke-width="1"/>
+  </g>
+</svg>

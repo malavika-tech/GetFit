@@ -1,0 +1,7111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+.logo i {
+    font-size: 2rem;
+}
+
+.system-name h1 {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.language-selector,
+.notification,
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.language-selector {
+    color: #667eea;
+}
+
+.notification,
+.user-profile {
+    color: #666;
+}
+
+.language-selector i:first-child,
+.notification i,
+.user-profile i {
+    font-size: 1.1rem;
+}
+
+.language-selector i:last-child {
+    font-size: 0.8rem;
+}
+
+/* Main Content */
+.main-content {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.role-selection {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #000000;
+}
+
+.role-selection h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.role-selection .highlight {
+    color: #000000;
+    font-weight: 800;
+}
+
+.role-selection p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Cards Container */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.role-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+
+.admin-card .card-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.trainer-card .card-icon {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+}
+
+.member-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.member-card .card-icon {
+    background: linear-gradient(135deg, #ee0979, #ff6a00);
+    color: white;
+}
+
+.member-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.member-avatar i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.member-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.detail-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.detail-badge:first-child {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.detail-badge:last-child {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.role-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.role-card p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.btn-admin {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-trainer {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+}
+
+.btn-member {
+    background: linear-gradient(135deg, #ee0979, #ff6a00);
+    color: white;
+}
+
+/* Login Page Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 2rem;
+}
+
+.login-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.member-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ee0979, #ff6a00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(238, 9, 121, 0.3);
+}
+
+.trainer-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(17, 153, 142, 0.3);
+}
+
+.admin-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.login-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.login-form {
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group label i {
+    color: #667eea;
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #fafafa;
+    color: #333;
+    font-family: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa;
+}
+
+.password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 3rem;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.forgot-password {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-full:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.login-footer {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.login-footer p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.login-footer a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Dashboard Layout */
+.dashboard-layout {
+    display: flex;
+    min-height: calc(100vh - 80px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    border-bottom: none;
+    margin: 0.15rem 0.75rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1.1rem;
+    text-decoration: none;
+    color: #777;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border-left: 3px solid transparent;
+    transition: background 0.2s ease, color 0.2s ease, border-left-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(102, 126, 234, 0.08);
+    color: #667eea;
+    border-left-color: rgba(102, 126, 234, 0.4);
+    padding-left: 1.3rem;
+}
+
+.sidebar-nav li.active a {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.1));
+    color: #667eea;
+    border-left-color: #667eea;
+    font-weight: 700;
+}
+
+.sidebar-nav a i {
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-nav a:hover i,
+.sidebar-nav li.active a i {
+    transform: scale(1.15);
+    color: #667eea;
+}
+
+.sidebar-footer {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.2rem;
+    background: linear-gradient(135deg, #f44336, #e53935);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.logout-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Dashboard Main Content */
+.dashboard-main {
+    flex: 1;
+    padding: 2rem;
+    background: #f8f9fa;
+    overflow-y: auto;
+}
+
+.member-dashboard .dashboard-main {
+    background: #f8f9fa;
+}
+
+.dashboard-main h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Trainer Attendance Layout Fix */
+.trainer-attendance .dashboard-main {
+    flex: 1;
+    padding: 2rem;
+    background: #f8f9fa;
+    overflow-y: auto;
+}
+
+.trainer-attendance .attendance-management {
+    width: 100%;
+    max-width: none;
+}
+
+/* Hide header for trainer-attendance page */
+.trainer-attendance .header {
+    display: none;
+}
+
+/* Trainer Attendance Page Styles */
+.attendance-management {
+    margin-bottom: 2rem;
+}
+
+.attendance-overview {
+    margin-bottom: 2rem;
+}
+
+.attendance-table-container {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.attendance-table th {
+    background: #667eea;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+}
+
+.attendance-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+.attendance-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-badge.present {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.status-badge.absent {
+    background: #ffebee;
+    color: #f44336;
+}
+
+.attendance-toggle {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.attendance-toggle .btn.active {
+    background: #667eea;
+    color: white;
+}
+
+/* Date Picker Styling */
+.attendance-section .header-actions .form-control {
+    width: 200px;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-card:nth-child(1) .stat-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.stat-card:nth-child(2) .stat-icon {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+}
+
+.stat-card:nth-child(3) .stat-icon {
+    background: linear-gradient(135deg, #ff9800, #f44336);
+}
+
+.stat-card:nth-child(4) .stat-icon {
+    background: linear-gradient(135deg, #2196f3, #00bcd4);
+}
+
+.stat-content h3 {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.stat-change {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.stat-change.positive {
+    color: #4caf50;
+}
+
+.stat-change.negative {
+    color: #f44336;
+}
+
+.stat-change.neutral {
+    color: #666;
+}
+
+/* Admin Actions */
+.admin-actions {
+    margin-bottom: 2rem;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.action-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.action-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.action-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.action-card p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+/* Recent Activity */
+.recent-activity {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.activity-list {
+    margin-top: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #667eea;
+}
+
+.activity-content p {
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.activity-time {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* Modal Styles */
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #999;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+/* Modal Content Styles */
+.registration-item,
+.trainer-item,
+.member-item,
+.plan-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.user-info,
+.trainer-info,
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info i,
+.trainer-info i,
+.member-info i {
+    font-size: 2rem;
+    color: #667eea;
+}
+
+.registration-actions,
+.trainer-actions,
+.member-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #f44336, #e91e63);
+    color: white;
+}
+
+/* Notification Badge */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #f44336;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.notification {
+    position: relative;
+}
+
+/* User Profile in Header */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.user-profile span {
+    font-weight: 500;
+}
+
+/* Trainer Dashboard Specific Styles */
+.assigned-members .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design for Trainer Dashboard */
+@media (max-width: 1024px) {
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.action-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.action-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.member-info {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.member-info h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.member-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.member-status {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.member-status.active {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.member-status.inactive {
+    background: #ffebee;
+    color: #f44336;
+}
+
+.member-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.stat-item i {
+    color: #11998e;
+    font-size: 1rem;
+}
+
+.stat-item span {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.member-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.member-actions .btn-small {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Today's Schedule */
+.today-schedule {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.schedule-list {
+    margin-top: 1rem;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.schedule-time {
+    min-width: 80px;
+    text-align: center;
+}
+
+.time {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.duration {
+    display: block;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.schedule-details {
+    flex: 1;
+}
+
+.schedule-details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.schedule-details p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.session-status {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.session-status.upcoming {
+    background: #e3f2fd;
+    color: #2196f3;
+}
+
+.session-status.in-progress {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.session-status.completed {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.schedule-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Modal Content Styles for Trainer Dashboard */
+.member-profile {
+    text-align: center;
+}
+
+.profile-header {
+    margin-bottom: 2rem;
+}
+
+.profile-header h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 1rem 0 0.5rem;
+}
+
+.profile-header p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.profile-details {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.detail-item span {
+    color: white;
+    font-weight: 600;
+}
+
+.detail-group {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.detail-group h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #11998e;
+    margin-bottom: 0.5rem;
+}
+
+.detail-group p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.workout-plan, .diet-plan {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.plan-details {
+    margin-bottom: 1.5rem;
+}
+
+.diet-plan-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.diet-plan-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.plan-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.workout-plan-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.workout-plan-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.plan-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.workout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design for Workout Plans */
+@media (max-width: 1024px) {
+    .workout-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .workout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.exercise-item, .meal-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.exercise-item h5, .meal-item h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #11998e;
+    margin-bottom: 0.5rem;
+}
+
+.exercise-item ul, .meal-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.exercise-item li, .meal-item li {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.exercise-item li:before, .meal-item li:before {
+    content: "•";
+    color: #11998e;
+    position: absolute;
+    left: 0;
+}
+
+.nutrition-summary {
+    padding: 1rem;
+    background: #e8f5e8;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.nutrition-summary h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #11998e;
+    margin-bottom: 0.5rem;
+}
+
+.nutrition-summary p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.diet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design for Diet Plans */
+@media (max-width: 1024px) {
+    .diet-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .diet-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Trainer Member Profile Styles */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.member-info-section,
+.fitness-details-section,
+.workout-plan-section,
+.diet-plan-section,
+.attendance-summary-section,
+.progress-info-section {
+    margin-bottom: 2rem;
+}
+
+.section-header {
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.info-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #666;
+    font-size: 0.9rem;
+    min-width: 200px;
+}
+
+.info-value {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.badge.premium {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.badge.active {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.member-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.member-badge.premium {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.member-badge.active {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.positive-change {
+    color: #4caf50;
+    font-weight: 600;
+}
+
+/* Responsive Design for Member Profile */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .info-label {
+        min-width: auto;
+    }
+}
+
+.plan-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.attendance-form {
+    max-width: 400px;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.rating-stars i {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.members-checklist {
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #11998e;
+}
+
+.progress-review {
+    max-width: 500px;
+}
+
+.progress-summary {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.progress-summary h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #11998e;
+    margin-bottom: 1rem;
+}
+
+.progress-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.progress-item span:first-child {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.progress-item span:last-child {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.progress-item span.positive {
+    color: #4caf50;
+}
+
+.progress-item span.negative {
+    color: #f44336;
+}
+
+/* Member Login Specific Styles */
+.divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.divider span {
+    background: white;
+    padding: 0 1rem;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.register-section {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.register-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.register-section p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #ee0979;
+    color: #ee0979;
+}
+
+/* Registration Form Styles */
+.registration-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #ee0979;
+}
+
+.form-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-section h4 i {
+    font-size: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    margin-bottom: 1rem;
+}
+
+.terms-link {
+    color: #ee0979;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Responsive Design for Registration */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .form-row .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .registration-form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        margin: 0.5rem;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .registration-form {
+        padding: 0 0.5rem;
+    }
+}
+
+/* Progress Page Styles */
+.progress-summary-section {
+    margin-bottom: 2rem;
+}
+
+.progress-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.progress-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.progress-card:nth-child(1) .progress-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.progress-card:nth-child(2) .progress-icon {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+}
+
+.progress-card:nth-child(3) .progress-icon {
+    background: linear-gradient(135deg, #ff9800, #f44336);
+}
+
+.progress-card:nth-child(4) .progress-icon {
+    background: linear-gradient(135deg, #2196f3, #00bcd4);
+}
+
+.progress-content h3 {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.progress-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.progress-number.positive {
+    color: #4caf50;
+}
+
+.progress-number.negative {
+    color: #f44336;
+}
+
+.progress-number.neutral {
+    color: #666;
+}
+
+.progress-date, .progress-status {
+    font-size: 0.8rem;
+    color: #999;
+    font-weight: 500;
+}
+
+.progress-status.normal {
+    color: #4caf50;
+}
+
+/* Add Progress Form Section */
+.add-progress-section {
+    margin-bottom: 2rem;
+}
+
+.progress-form-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.progress-form-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.progress-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.progress-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.progress-form label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.progress-form label i {
+    color: #667eea;
+    font-size: 1rem;
+}
+
+.progress-form input,
+.progress-form textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.progress-form input:focus,
+.progress-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.progress-form textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+}
+
+/* Progress Status Section */
+.progress-status-section {
+    margin-bottom: 2rem;
+}
+
+.status-card {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: white;
+}
+
+.status-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.status-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.status-content p {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* Progress History Section */
+.progress-history-section {
+    margin-bottom: 2rem;
+}
+
+.history-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.history-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.progress-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.progress-table thead {
+    background: #f8f9fa;
+}
+
+.progress-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.progress-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.progress-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Attendance Table Styles */
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    background: #f8f9fa;
+    color: #333;
+    font-size: 0.9rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.attendance-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.attendance-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.attendance-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* Responsive Design for Progress Page */
+@media (max-width: 768px) {
+    .progress-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .status-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .table-container {
+        font-size: 0.8rem;
+    }
+    
+    .progress-table th,
+    .progress-table td {
+        padding: 0.8rem 0.5rem;
+    }
+}
+
+/* Admin Members Search Bar Styling */
+.admin-members .header-row {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-members .search-bar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.admin-members .search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100;
+}
+
+.admin-members .search-box .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.admin-members .table-header .form-control {
+    width: 180px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* Admin Members Filter Cards Styling */
+.admin-members .filter-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+.admin-members .filter-card {
+    flex: 1;
+    min-width: 250px;
+    
+}
+
+.admin-members .filter-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.admin-members .filter-card .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* Admin Members Filter Cards Styling */
+.admin-members .filter-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+.admin-members .filter-card {
+    flex: 1;
+    min-width: 250px;
+    
+}
+
+.admin-members .filter-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.admin-members .filter-card .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .progress-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .progress-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .progress-number {
+        font-size: 1.5rem;
+    }
+    
+    .progress-form-card,
+    .history-card {
+        padding: 1.5rem;
+    }
+    
+    .status-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Responsive Design for Trainer Dashboard */
+@media (max-width: 768px) {
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .member-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .schedule-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .schedule-time {
+        min-width: auto;
+    }
+    
+    .member-actions {
+        flex-wrap: wrap;
+    }
+    
+    .profile-actions,
+    .plan-actions {
+        flex-direction: column;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-card {
+        padding: 1rem;
+    }
+    
+    .schedule-item {
+        padding: 0.8rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 0.5rem;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 1rem;
+    }
+}
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .actions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Dashboard Layout with Right Sidebar */
+.dashboard-container {
+    display: flex;
+    gap: 2rem;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-sidebar {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Responsive Design for Right Sidebar */
+@media (max-width: 1200px) {
+    .right-sidebar {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    
+    .right-sidebar {
+        width: 100%;
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    
+    .sidebar-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .right-sidebar {
+        gap: 1rem;
+    }
+    
+    .sidebar-card {
+        padding: 1rem;
+    }
+    
+    .schedule-item,
+    .session-item,
+    .activity-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .schedule-time,
+    .session-date {
+        min-width: auto;
+    }
+    
+    .goal-progress {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .progress-text {
+        text-align: center;
+    }
+}
+
+/* Right Sidebar Styles */
+.right-sidebar {
+    width: 350px;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.sidebar-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    flex-shrink: 0;
+}
+
+.sidebar-card-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Today's Schedule */
+.schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.schedule-item:hover {
+    background: #e8f5e8;
+}
+
+.schedule-item:last-child {
+    margin-bottom: 0;
+}
+
+.schedule-time {
+    min-width: 80px;
+    text-align: center;
+}
+
+.schedule-time .time {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.schedule-time .duration {
+    display: block;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.schedule-details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.schedule-details p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Upcoming Sessions */
+.session-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.session-item:hover {
+    background: #e8f5e8;
+}
+
+.session-item:last-child {
+    margin-bottom: 0;
+}
+
+.session-date {
+    min-width: 80px;
+    text-align: center;
+}
+
+.session-date .day {
+    display: block;
+    font-weight: 600;
+    color: #ee0979;
+    font-size: 0.9rem;
+}
+
+.session-date .time {
+    display: block;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.session-details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.session-details p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Goals Progress */
+.goal-item {
+    margin-bottom: 1.5rem;
+}
+
+.goal-item:last-child {
+    margin-bottom: 0;
+}
+
+.goal-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.goal-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.goal-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #ee0979, #ff6a00);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Recent Activities */
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.activity-item:hover {
+    background: #e8f5e8;
+}
+
+.activity-item:last-child {
+    margin-bottom: 0;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ee0979, #ff6a00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.activity-details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.activity-details p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.activity-time {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Responsive Design for Right Sidebar */
+@media (max-width: 1200px) {
+    .right-sidebar {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-layout {
+        flex-direction: column;
+    }
+    
+    .right-sidebar {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 2rem;
+    }
+    
+    .sidebar-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .right-sidebar {
+        gap: 1rem;
+    }
+    
+    .sidebar-card {
+        padding: 1rem;
+    }
+    
+    .schedule-item,
+    .session-item,
+    .activity-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .schedule-time,
+    .session-date {
+        min-width: auto;
+    }
+    
+    .goal-progress {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .progress-text {
+        text-align: center;
+    }
+}
+
+/* Member Dashboard - Clean Background */
+.member-dashboard {
+    background: #f8f9fa;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1a202c;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Base Styles */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.dashboard-header {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.logo i {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.notifications {
+    position: relative;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #d3d3d3;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.user-profile:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Main Layout */
+.main-layout {
+    display: flex;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-item a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-item.active a {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+}
+
+.section-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-info h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.stat-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.stat-change {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.stat-change.positive {
+    color: #4ade80;
+}
+
+.stat-change.negative {
+    color: #f87171;
+}
+
+/* Quick Actions */
+.quick-actions {
+    margin-bottom: 2rem;
+}
+
+.quick-actions h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Horizontal row for four specific buttons */
+.actions-horizontal-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: stretch;
+}
+
+/* Responsive design - stack vertically on smaller screens */
+@media (max-width: 1024px) {
+    .actions-horizontal-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .actions-horizontal-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .actions-horizontal-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.action-card {
+    padding: 1.5rem;
+    text-align: center;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    color: white;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-button {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* Profile Section Styles */
+.profile-section {
+    padding: 2rem;
+}
+
+.profile-section h2 {
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.profile-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 2rem;
+    color: #333;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.profile-header {
+    margin-bottom: 1rem;
+}
+
+.member-id {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-logo {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.member-logo-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.member-logo-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.member-name {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.profile-details {
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item label {
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.detail-item span {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Quick Navigation Styles */
+.quick-nav-section {
+    margin-top: 2rem;
+}
+
+.quick-nav-section h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.quick-nav-card {
+    display: block;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.quick-nav-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.quick-nav-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.quick-nav-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+/* Profile Tab Styles */
+.profile-header-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.profile-header {
+    margin-bottom: 1.5rem;
+}
+
+.member-id {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-avatar-center {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.profile-avatar-center i {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.member-name {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.profile-tabs {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.tab-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: transparent;
+}
+
+.tab-btn i {
+    font-size: 1rem;
+}
+
+.tab-content {
+    min-height: 300px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.tab-pane h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.info-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-item label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.info-item span {
+    color: white;
+    font-weight: 600;
+}
+
+.status-active {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.profile-actions .btn {
+    flex: 1;
+    min-width: 200px;
+}
+
+.action-card i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+}
+
+.action-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.action-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Profile Section */
+.profile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.profile-card {
+    padding: 2rem;
+}
+
+.profile-card h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.info-item label {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.info-item span {
+    color: white;
+    font-weight: 600;
+}
+
+.status-active {
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Workout Section */
+.workout-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.workout-card {
+    padding: 2rem;
+}
+
+.workout-card h3 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exercise-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.exercise-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.exercise-info h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.exercise-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.25rem;
+}
+
+.duration {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.exercise-status {
+    font-size: 1.2rem;
+}
+
+.exercise-status.completed {
+    color: #4ade80;
+}
+
+.exercise-status.pending {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.workout-schedule {
+    padding: 2rem;
+}
+
+.workout-schedule h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.schedule-day {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.schedule-day:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.schedule-day .day {
+    display: block;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.schedule-day .focus {
+    display: block;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.schedule-day.rest {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Diet Section */
+.diet-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.meal-plan {
+    padding: 2rem;
+}
+
+.meal-plan h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.meal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meal-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.meal-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.meal-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 80px;
+}
+
+.meal-time i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.meal-time span {
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.meal-time small {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.7rem;
+}
+
+.meal-details h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.meal-details p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.25rem;
+}
+
+.calories {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.nutrition-summary {
+    padding: 2rem;
+}
+
+.nutrition-summary h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.nutrition-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nutrition-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.nutrition-item .label {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.nutrition-item .value {
+    color: white;
+    font-weight: 600;
+}
+
+/* Attendance Section */
+.attendance-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.attendance-summary {
+    padding: 2rem;
+}
+
+.attendance-summary h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.attendance-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.attendance-stats .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.attendance-stats .stat-item i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.attendance-stats .stat-item h4 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.attendance-stats .stat-item p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.attendance-calendar {
+    padding: 2rem;
+}
+
+.attendance-calendar h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-header {
+    text-align: center;
+    padding: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.calendar-day.present {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+}
+
+.calendar-day.absent {
+    background: rgba(248, 113, 113, 0.2);
+    color: #f87171;
+}
+
+.calendar-day.today {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 700;
+}
+
+.calendar-day.future {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.calendar-day.empty {
+    visibility: hidden;
+}
+
+/* Progress Section */
+.progress-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.progress-chart {
+    padding: 2rem;
+}
+
+.progress-chart h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.chart-placeholder {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.chart-placeholder i {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+
+.chart-placeholder p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+.progress-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.data-point {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.data-point span {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.data-point strong {
+    color: white;
+    font-weight: 600;
+}
+
+.bmi-history {
+    padding: 2rem;
+}
+
+.bmi-history h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.bmi-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bmi-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.bmi-item .date {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bmi-item .bmi-value {
+    color: white;
+    font-weight: 600;
+}
+
+.bmi-category {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.bmi-category.normal {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+}
+
+.bmi-category.overweight {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
+.achievements {
+    padding: 2rem;
+}
+
+.achievements h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.achievement-item i {
+    font-size: 1.5rem;
+}
+
+.achievement-item i.gold {
+    color: #fbbf24;
+}
+
+.achievement-item i.silver {
+    color: #9ca3af;
+}
+
+.achievement-item i.bronze {
+    color: #d97706;
+}
+
+.achievement-item h4 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.achievement-item p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Trainer Section */
+.trainer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.trainer-profile {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.trainer-avatar {
+    flex-shrink: 0;
+}
+
+.trainer-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.trainer-info h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.trainer-title {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+}
+
+.trainer-specialization h4 {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+}
+
+.specialization-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background: rgba(102, 126, 234, 0.2);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.trainer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-item i {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.trainer-actions {
+    padding: 2rem;
+}
+
+.trainer-actions h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-shrink: 0;
+}
+
+.sidebar-card {
+    padding: 1.5rem;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-card h3 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.sidebar-card-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.schedule-item,
+.session-item,
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: background 0.3s ease;
+}
+
+.schedule-item:hover,
+.session-item:hover,
+.activity-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.schedule-item:last-child,
+.session-item:last-child,
+.activity-item:last-child {
+    margin-bottom: 0;
+}
+
+.schedule-time,
+.session-date {
+    min-width: 80px;
+    text-align: center;
+}
+
+.schedule-time .time,
+.session-date .day {
+    display: block;
+    font-weight: 600;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.schedule-time .duration,
+.session-date .time {
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.schedule-details h4,
+.session-details h4,
+.activity-details h4 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.schedule-details p,
+.session-details p,
+.activity-details p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.activity-time {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.goal-item {
+    margin-bottom: 1.5rem;
+}
+
+.goal-item:last-child {
+    margin-bottom: 0;
+}
+
+.goal-info h4 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.goal-info p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.goal-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+
+/* Modal */
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: white;
+}
+
+.modal-body {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* NOTE: This dark .form-control block was scoped only to the dark modal section above.
+   The global .form-control is defined earlier and must NOT be overridden here. */
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .right-sidebar {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+    }
+    
+    .right-sidebar {
+        width: 100%;
+        order: 3;
+    }
+    
+    .sidebar-nav ul {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding-bottom: 1rem;
+    }
+    
+    .nav-item {
+        flex-shrink: 0;
+    }
+    
+    .diet-container,
+    .trainer-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .attendance-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        padding: 1rem;
+    }
+    
+    .main-layout {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .section-header h1 {
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-container,
+    .workout-container,
+    .progress-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .schedule-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.25rem;
+    }
+    
+    .right-sidebar {
+        gap: 1rem;
+    }
+    
+    .sidebar-card {
+        padding: 1rem;
+        height: auto;
+    }
+    
+    .schedule-item,
+    .session-item,
+    .activity-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .schedule-time,
+    .session-date {
+        min-width: auto;
+    }
+    
+    .goal-progress {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .progress-text {
+        text-align: center;
+    }
+}
+.profile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+}
+
+.profile-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item label {
+    font-weight: 500;
+    color: #666;
+}
+
+.info-item span {
+    font-weight: 600;
+    color: #333;
+}
+
+.status-active {
+    color: #4caf50;
+    font-weight: 600;
+}
+
+/* Workout Plan Styles */
+.workout-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.workout-day {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.workout-day h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exercise-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.exercise-item:hover {
+    background: #e8f5e8;
+}
+
+.exercise-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.exercise-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.duration {
+    font-size: 0.8rem;
+    color: #ee0979;
+    font-weight: 500;
+}
+
+.exercise-status i {
+    font-size: 1.2rem;
+}
+
+.exercise-status i.completed {
+    color: #4caf50;
+}
+
+.exercise-status i.pending {
+    color: #ddd;
+}
+
+.workout-schedule {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.workout-schedule h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.schedule-day {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.schedule-day:hover {
+    background: #e8f5e8;
+}
+
+.schedule-day.rest {
+    background: #f5f5f5;
+}
+
+.schedule-day .day {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.schedule-day .focus {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Diet Plan Styles */
+.diet-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.meal-plan {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.meal-plan h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+}
+
+.meal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meal-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.meal-item:hover {
+    background: #e8f5e8;
+}
+
+.meal-time {
+    min-width: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.meal-time i {
+    font-size: 1.5rem;
+    color: #ee0979;
+}
+
+.meal-time span {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.meal-time small {
+    color: #666;
+    font-size: 0.7rem;
+}
+
+.meal-details {
+    flex: 1;
+}
+
+.meal-details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.meal-details p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.calories {
+    font-size: 0.8rem;
+    color: #ee0979;
+    font-weight: 500;
+}
+
+.nutrition-summary {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nutrition-summary h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+}
+
+.nutrition-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nutrition-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nutrition-item:last-child {
+    border-bottom: none;
+}
+
+.nutrition-item .label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.nutrition-item .value {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Attendance Section Styles */
+.attendance-section {
+    padding: 2rem;
+}
+
+.attendance-section h2 {
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.attendance-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.attendance-summary-card,
+.attendance-calendar-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 2rem;
+    color: #333;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    min-height: 300px;
+}
+
+.attendance-summary-card h3,
+.attendance-calendar-card h3 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.attendance-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.attendance-section .attendance-summary-card .attendance-stats .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    min-height: 70px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-section .attendance-summary-card .attendance-stats .stat-item i {
+    font-size: 2rem;
+    color: #667eea;
+    min-width: 40px;
+    text-align: center;
+}
+
+.attendance-section .attendance-summary-card .attendance-stats .stat-item h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.attendance-section .attendance-summary-card .attendance-stats .stat-item p {
+    font-size: 1.1rem;
+    color: #4a5568;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.attendance-calendar {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-day.present {
+    background: #4ade80;
+    color: white;
+}
+
+.calendar-day.absent {
+    background: #ef4444;
+    color: white;
+}
+
+.calendar-day.today {
+    background: #667eea;
+    color: white;
+    font-weight: 600;
+}
+
+.calendar-day.upcoming {
+    background: #e5e7eb;
+    color: #6b7280;
+}
+
+.calendar-day.empty {
+    visibility: hidden;
+}
+
+/* Progress Styles */
+.progress-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.progress-chart {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.progress-chart h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+}
+
+.chart-placeholder {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.chart-placeholder i {
+    font-size: 3rem;
+    color: #ee0979;
+    margin-bottom: 1rem;
+}
+
+.progress-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.data-point {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.data-point span {
+    display: block;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.data-point strong {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.bmi-history {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.bmi-history h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+}
+
+.bmi-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bmi-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.bmi-item .date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.bmi-item .bmi-value {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.bmi-category {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.bmi-category.normal {
+    background: #e8f5e8;
+    color: #4caf50;
+}
+
+.bmi-category.overweight {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.achievements {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.achievements h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 1.5rem;
+}
+
+.achievement-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.achievement-item:hover {
+    background: #e8f5e8;
+}
+
+.achievement-item i {
+    font-size: 1.5rem;
+}
+
+.achievement-item i.gold {
+    color: #ffd700;
+}
+
+.achievement-item i.silver {
+    color: #c0c0c0;
+}
+
+.achievement-item i.bronze {
+    color: #cd7f32;
+}
+
+.achievement-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.achievement-item p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Trainer Styles */
+.trainer-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.trainer-profile {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.trainer-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ee0979, #ff6a00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.trainer-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.trainer-title {
+    color: #ee0979;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.trainer-specialization h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.specialization-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    padding: 0.3rem 0.8rem;
+    background: #f8f9fa;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #ee0979;
+    font-weight: 500;
+}
+
+.trainer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.contact-item i {
+    color: #ee0979;
+}
+
+.trainer-actions {
+    display: flex !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+    margin-top: 0.2rem !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Responsive Design for Member Dashboard */
+@media (max-width: 1024px) {
+    .diet-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .attendance-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-data {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .trainer-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .trainer-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .schedule-grid {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+    }
+    
+    .meal-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .calendar-grid {
+        gap: 0.2rem;
+    }
+    
+    .calendar-day {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .bmi-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .trainer-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-data {
+        grid-template-columns: 1fr;
+    }
+    
+    .specialization-tags {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+    
+    .sidebar-nav ul {
+        display: flex;
+        overflow-x: auto;
+        padding: 0.5rem;
+    }
+    
+    .sidebar-nav li {
+        border-bottom: none;
+        border-right: 1px solid #f0f0f0;
+    }
+    
+    .sidebar-nav a {
+        white-space: nowrap;
+        padding: 0.8rem 1rem;
+    }
+    
+    .dashboard-main {
+        padding: 1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .registration-item,
+    .trainer-item,
+    .member-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .registration-actions,
+    .trainer-actions,
+    .member-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .header-left {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .system-name h1 {
+        font-size: 1rem;
+    }
+    
+    .header-right {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1rem;
+    }
+    
+    .login-card {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .admin-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .login-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 1.5rem;
+    }
+    
+    .admin-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .login-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .form-group input {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .header-left {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .system-name h1 {
+        font-size: 1rem;
+    }
+    
+    .role-selection h2 {
+        font-size: 2rem;
+    }
+    
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .role-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-right {
+        gap: 1rem;
+    }
+    
+    .language-selector,
+    .notification,
+    .user-profile {
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .role-selection h2 {
+        font-size: 1.5rem;
+    }
+    
+    .role-selection p {
+        font-size: 1rem;
+    }
+}
+
+/* Modern Premium Member Dashboard - Clean Theme */
+.member-dashboard {
+    background: #f8f9fa;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1a202c;
+}
+
+/* Top Header Bar */
+.top-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: #667eea;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.language-dropdown select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.language-dropdown select option {
+    background: #667eea;
+    color: white;
+}
+
+.notification-bell {
+    position: relative;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.profile-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+/* Main Layout */
+.main-layout {
+    display: flex;
+    min-height: calc(100vh - 80px);
+}
+
+/* Left Sidebar Navigation */
+.left-sidebar {
+    width: 280px;
+    background: linear-gradient(135deg, #4a69bd, #1e3799);
+    padding: 2rem 0;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-item a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 25px;
+    margin: 0 1rem;
+}
+
+.nav-item.active a {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 25px;
+    margin: 0 1rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+.card-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.card-content {
+    color: #34495e;
+}
+
+/* Profile Card */
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #667eea;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.profile-details h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.personal-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.stat-item i {
+    color: #667eea;
+    width: 20px;
+}
+
+/* Membership Card */
+.membership-info {
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.badge.premium {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.membership-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.date-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 15px;
+}
+
+.date-item label {
+    font-weight: 500;
+    color: #667eea;
+}
+
+.expiry-highlight {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.membership-progress {
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(102, 126, 234, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.status-badge.active {
+    background: rgba(46, 204, 113, 0.2);
+    color: #27ae60;
+}
+
+/* Workout Card */
+.workout-info {
+    text-align: center;
+}
+
+.workout-illustration {
+    font-size: 4rem;
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.exercise-item i {
+    color: #27ae60;
+}
+
+.workout-schedule {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 15px;
+}
+
+.schedule-info,
+.schedule-days {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.schedule-info i,
+.schedule-days i {
+    color: #667eea;
+}
+
+/* Diet Card */
+.diet-info {
+    text-align: center;
+}
+
+.diet-illustration {
+    font-size: 4rem;
+    color: #27ae60;
+    margin-bottom: 1.5rem;
+}
+
+.meal-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(46, 204, 113, 0.1);
+    border-radius: 15px;
+}
+
+.meal-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #27ae60;
+}
+
+.meal-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.meal-details small {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+}
+
+.calories-total {
+    font-weight: 600;
+    color: #27ae60;
+    margin-bottom: 1.5rem;
+}
+
+/* Attendance Card */
+.attendance-info {
+    text-align: center;
+}
+
+.attendance-toggle {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 25px;
+    padding: 0.25rem;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    color: #667eea;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: 600;
+    color: #667eea;
+    padding: 0.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.calendar-day.present {
+    background: rgba(46, 204, 113, 0.2);
+    color: #27ae60;
+}
+
+.calendar-day.absent {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.calendar-day.today {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+}
+
+.calendar-day.future {
+    color: #bdc3c7;
+}
+
+.calendar-day.empty {
+    visibility: hidden;
+}
+
+.calendar-day i {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 0.7rem;
+}
+
+.attendance-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+}
+
+.stat-label {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: #667eea;
+}
+
+/* Trainer Card */
+.trainer-info {
+    text-align: center;
+}
+
+.trainer-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.trainer-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #667eea;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.trainer-details h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.trainer-title {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.specialization {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.trainer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.contact-item i {
+    color: #667eea;
+}
+
+/* Progress Card */
+.progress-info {
+    text-align: center;
+}
+
+.progress-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.chart-container h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.chart-placeholder {
+    height: 120px;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-line {
+    position: relative;
+    height: 100%;
+}
+
+.chart-line::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.chart-point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #667eea;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.chart-point span {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #667eea;
+    white-space: nowrap;
+}
+
+.progress-badges {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.badge-item i {
+    font-size: 2rem;
+}
+
+.badge-item i.gold {
+    color: #f39c12;
+}
+
+.badge-item i.silver {
+    color: #95a5a6;
+}
+
+.badge-item i.bronze {
+    color: #cd7f32;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.btn-success {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .header-left {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .main-layout {
+        flex-direction: column;
+    }
+    
+    .left-sidebar {
+        width: 100%;
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+        padding: 1rem;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .trainer-profile {
+        flex-direction: column;
+    }
+    
+    .progress-charts {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-card {
+        padding: 1.5rem;
+    }
+    
+    .calendar-grid {
+        gap: 0.25rem;
+    }
+    
+    .attendance-toggle {
+        flex-direction: column;
+    }
+}
+
+/* Trainer Assign Workout Page Styles */
+.workout-selection-section,
+.workout-details-section,
+.schedule-settings-section,
+.action-buttons-section {
+    margin-bottom: 2rem;
+}
+
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Workout Plan Dropdown Specific Styling */
+#workout-plan.form-control {
+    background: white;
+    border: 2px solid #e0e0e0;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+/* Workout Action Buttons */
+.workout-plan-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.workout-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.workout-actions .btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    min-width: 180px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#workout-plan.form-control option {
+    background: white;
+    color: #333;
+    padding: 0.8rem;
+}
+
+#workout-plan.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 5px rgba(102, 126, 234, 0.2);
+}
+
+/* Date Inputs Styling */
+input[type="date"].form-control {
+    color: #000;
+}
+
+/* Workout Days Dropdown Styling */
+#workout-days.form-control {
+    background: white;
+    border: 2px solid #e0e0e0;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+#workout-days.form-control option {
+    background: white;
+    color: #333;
+    padding: 0.8rem;
+}
+
+#workout-days.form-control:hover {
+    border-color: #667eea;
+}
+
+#workout-days.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 5px rgba(102, 126, 234, 0.2);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Cancel Button Specific Styling */
+.btn-cancel {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Admin Members Page Styling */
+.admin-members .section-header {
+    margin-bottom: 2rem;
+}
+
+/* Admin Members - SAME as Trainers */
+
+.admin-members .filter-section {
+    margin-bottom: 2rem;
+}
+
+
+.admin-members .filter-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.admin-members .search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-members .search-box .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.admin-members .filter-card .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+.admin-members .members-table-container {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.admin-members .table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.admin-members .members-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.admin-members .members-table th {
+    background: #f8f9fa;
+    color: #333;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.admin-members .members-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    color: #495057;
+}
+
+.admin-members .table-action-btn {
+    min-width: 38px;
+    min-height: 38px;
+    padding: 0;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    margin-right: 0.5rem;
+}
+
+.admin-members .table-action-btn:last-child {
+    margin-right: 0;
+}
+
+
+.admin-members .members-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-members .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.admin-members .status-badge.active {
+    background: #28a745;
+    color: white;
+}
+
+.admin-members .status-badge.pending {
+    background: #ffc107;
+    color: #333;
+}
+
+.admin-members .btn-small {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-members .btn-small.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.admin-members .btn-small.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.admin-members .btn-small.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background: #5a6268;
+}
+.admin-members .filter-cards {
+    display: flex;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    width: 100%;
+    gap: 1rem;
+}
+
+.admin-members .filter-card {
+    flex: 1 !important;
+    min-width: 0;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+}
+
+/* Admin Trainers Page Styling */
+.trainers-management {
+    width: 100%;
+    max-width: none;
+}
+
+.trainers-management .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.trainers-management .section-header h2 {
+    margin: 0;
+}
+
+.trainers-management .header-right-content {
+    display: flex;
+    gap: 1rem;
+}
+
+.trainers-overview {
+    margin-bottom: 2rem;
+}
+
+.admin-trainers .filter-section {
+    margin-bottom: 2rem;
+}
+
+.admin-trainers .filter-cards {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.admin-trainers .filter-card {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+}
+
+.admin-trainers .filter-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.admin-trainers .search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-trainers .search-box .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.admin-trainers .filter-card .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.trainers-table-container {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.admin-trainers .table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.trainers-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.trainers-table th {
+    background: #f8f9fa;
+    color: #333;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.trainers-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    color: #495057;
+}
+
+.trainers-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.trainers-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-trainers .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.admin-trainers .status-badge.active {
+    background: #28a745;
+    color: white;
+}
+
+.admin-trainers .status-badge.inactive {
+    background: #dc3545;
+    color: white;
+}
+
+.admin-trainers .table-action-btn {
+    min-width: 38px;
+    min-height: 38px;
+    padding: 0;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    margin-right: 0.5rem;
+}
+/* FIX: Align action buttons horizontally like members page */
+.admin-trainers td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-trainers .table-action-btn:last-child {
+    margin-right: 0;
+}
+
+/* Responsive Design for Admin Trainers */
+@media (max-width: 768px) {
+    .trainers-management .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .trainers-management .header-right-content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .trainers-management .header-right-content .btn {
+        width: 100%;
+    }
+
+    .admin-trainers .filter-cards {
+        flex-direction: column;
+    }
+
+    .admin-trainers .filter-card {
+        width: 100%;
+    }
+
+    .trainers-table {
+        font-size: 0.8rem;
+    }
+
+    .trainers-table th,
+    .trainers-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+/* Responsive Design for Assign Workout */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* Admin Memberships Page Styling */
+.admin-memberships .section-header {
+    margin-bottom: 2rem;
+}
+
+.admin-memberships .filter-section {
+    margin-bottom: 2rem;
+}
+
+.admin-memberships .filter-cards {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.admin-memberships .filter-card {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+}
+
+.admin-memberships .filter-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.admin-memberships .search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-memberships .search-box .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.admin-memberships .filter-card .form-control {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.admin-memberships .memberships-table-container {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.admin-memberships .table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.admin-memberships .memberships-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.admin-memberships .memberships-table th {
+    background: #f8f9fa;
+    color: #333;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.admin-memberships .memberships-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-memberships .memberships-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.admin-memberships .memberships-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-memberships .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.admin-memberships .status-badge.active {
+    background: #28a745;
+    color: white;
+}
+
+.admin-memberships .status-badge.expired {
+    background: #dc3545;
+    color: white;
+}
+
+.admin-memberships .payment-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.admin-memberships .payment-status.paid {
+    background: #28a745;
+    color: white;
+}
+
+.admin-memberships .payment-status.pending {
+    background: #ffc107;
+    color: #333;
+}
+
+.admin-memberships .payment-status.overdue {
+    background: #dc3545;
+    color: white;
+}
+
+.admin-memberships .table-action-btn {
+    min-width: 38px;
+    min-height: 38px;
+    padding: 0;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    margin-right: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-memberships .table-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.admin-memberships .table-action-btn:last-child {
+    margin-right: 0;
+}
+
+.admin-memberships .table-action-btn.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.admin-memberships .table-action-btn.btn-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.admin-memberships .table-action-btn.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #fd7e14);
+    color: white;
+}
+
+/* Membership Form Styles */
+.membership-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.membership-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.membership-form .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.membership-form .form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.membership-form .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Responsive Design for Admin Memberships */
+@media (max-width: 768px) {
+    .memberships-management .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .memberships-management .header-right-content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .memberships-management .header-right-content .btn {
+        width: 100%;
+    }
+
+    .admin-memberships .filter-cards {
+        flex-direction: column;
+    }
+
+    .admin-memberships .filter-card {
+        width: 100%;
+    }
+
+    .memberships-table {
+        font-size: 0.8rem;
+    }
+
+    .memberships-table th,
+    .memberships-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .admin-memberships .table-action-btn {
+        min-width: 32px;
+        min-height: 32px;
+        font-size: 0.8rem;
+    }
+
+    .membership-form .form-actions {
+        flex-direction: column;
+    }
+
+    .membership-form .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* Admin Settings Page Styling */
+.settings-management .section-header {
+    margin-bottom: 2rem;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.settings-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+}
+
+.card-header {
+    background: white;
+    color: #333;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #333;
+}
+
+.card-header h3 i {
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.profile-picture-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea20, #764ba220);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #667eea;
+}
+
+.profile-picture i {
+    font-size: 2.5rem;
+    color: #667eea;
+}
+
+.profile-info-upload {
+    text-align: center;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.settings-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.settings-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.settings-form .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.settings-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.settings-form .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.settings-form .form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.settings-form textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.password-input {
+    position: relative;
+}
+
+.password-input .form-control {
+    padding-right: 3rem;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #667eea;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-upload .btn {
+    white-space: nowrap;
+}
+
+.file-name {
+    color: #666;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.toggle-container {
+    margin-top: 0.5rem;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Responsive Design for Admin Settings */
+@media (max-width: 1024px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .settings-card {
+        margin: 0;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .settings-form .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .file-upload {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .profile-picture-section {
+        margin-bottom: 1.5rem;
+    }
+}
+/* STRONG FIX: Remove extra spacing */
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;   /* 🔥 VERY IMPORTANT */
+    gap: 0.3rem;                  /* tighter spacing */
+    padding: 1rem;                /* reduce padding if too big */
+}
+
+.profile-card h2 {
+    margin: 0;                    /* remove all extra margin */
+}
+
+.profile-header {
+    margin: 0 !important;
+    padding: 0;
+}
+
+.member-name {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center Update Profile Button in Card */
+.profile-card .btn-admin {
+    display: block;
+    margin: 1rem auto 0;
+    text-align: center;
+}

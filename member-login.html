@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login - GetFit Online Fitness Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <span>GetFit</span>
+            </div>
+            <div class="system-name">
+                <h1>Online Fitness Management System</h1>
+            </div>
+        </div>
+        <div class="header-right">
+
+            <div class="user-profile">
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="member-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h2>Member Login</h2>
+                    <p>Access your fitness dashboard and track your progress</p>
+                </div>
+
+                <!-- Login Form -->
+                <form class="login-form" id="memberLoginForm">
+                    <div class="form-group">
+                        <label for="memberUsername">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <input type="text" id="memberUsername" name="memberUsername" placeholder="Enter your username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="memberPassword">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <div class="password-input">
+                            <input type="password" id="memberPassword" name="memberPassword" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" onclick="toggleMemberPassword()">
+                                <i class="fas fa-eye" id="memberToggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="memberRemember">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-member btn-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login to Member Dashboard
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Register Section -->
+                <div class="register-section">
+                    <h3>New to GetFit?</h3>
+                    <p>Join our fitness community and start your journey today!</p>
+                    <button class="btn btn-member btn-outline" onclick="showRegistrationForm()">
+                        <i class="fas fa-user-plus"></i>
+                        Register Now
+                    </button>
+                </div>
+
+                <div class="login-footer">
+                    <p>Not a member? <a href="index.html">Go back to role selection</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal-container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Member Registration</h3>
+                <button class="modal-close" onclick="closeRegistrationModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="registration-form" id="registrationForm">
+                    <!-- Personal Info Section -->
+                    <div class="form-section">
+                        <h4><i class="fas fa-user"></i> Personal Info</h4>
+                        <div class="form-group">
+                            <label for="fullName">
+                                <i class="fas fa-user"></i>
+                                Full Name
+                            </label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">
+                                <i class="fas fa-birthday-cake"></i>
+                                Age
+                            </label>
+                            <input type="number" id="age" name="age" placeholder="Enter your age" min="16" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">
+                                <i class="fas fa-venus-mars"></i>
+                                Gender
+                            </label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i>
+                                Phone
+                            </label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" maxlength="10" pattern="[0-9]{10}" required>
+                            <small>Enter exactly 10 digits</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+
+                    <!-- Account Info Section -->
+                    <div class="form-section">
+                        <h4><i class="fas fa-user-cog"></i> Account Info</h4>
+                        <div class="form-group">
+                            <label for="username">
+                                <i class="fas fa-user"></i>
+                                Username
+                            </label>
+                            <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">
+                                <i class="fas fa-lock"></i>
+                                Password
+                            </label>
+                            <div class="password-input">
+                                <input type="password" id="password" name="password" placeholder="Create a password" required>
+                                <button type="button" class="toggle-password" onclick="toggleRegPassword()">
+                                    <i class="fas fa-eye" id="regToggleIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">
+                                <i class="fas fa-lock"></i>
+                                Confirm Password
+                            </label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                                <button type="button" class="toggle-password" onclick="toggleConfirmPassword()">
+                                    <i class="fas fa-eye" id="confirmToggleIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-id-card"></i>
+                                Membership Plan
+                            </label>
+                            <div class="checkbox-group" style="display: flex; gap: 15px; margin-top: 10px;">
+                                <label style="font-weight: normal; display: flex; align-items: center; gap: 5px;">
+                                    <input type="checkbox" name="membershipPlan" value="monthly" class="plan-checkbox" onclick="uncheckOthers(this)"> Monthly
+                                </label>
+                                <label style="font-weight: normal; display: flex; align-items: center; gap: 5px;">
+                                    <input type="checkbox" name="membershipPlan" value="quarterly" class="plan-checkbox" onclick="uncheckOthers(this)"> Quarterly
+                                </label>
+                                <label style="font-weight: normal; display: flex; align-items: center; gap: 5px;">
+                                    <input type="checkbox" name="membershipPlan" value="yearly" class="plan-checkbox" onclick="uncheckOthers(this)"> Yearly
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fitness Info Section -->
+                    <div class="form-section">
+                        <h4><i class="fas fa-dumbbell"></i> Fitness Info</h4>
+                        <div class="form-group">
+                            <label for="height">
+                                <i class="fas fa-ruler-vertical"></i>
+                                Height
+                            </label>
+                            <input type="number" id="height" name="height" placeholder="Enter height in cm" min="100" max="250" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">
+                                <i class="fas fa-weight"></i>
+                                Weight
+                            </label>
+                            <input type="number" id="weight" name="weight" placeholder="Enter weight in kg" min="30" max="300" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fitnessGoal">
+                                <i class="fas fa-bullseye"></i>
+                                Fitness Goal
+                            </label>
+                            <select id="fitnessGoal" name="fitnessGoal" required>
+                                <option value="">Select your fitness goal</option>
+                                <option value="weight-loss">Weight Loss</option>
+                                <option value="muscle-gain">Muscle Gain</option>
+                                <option value="endurance">Improve Endurance</option>
+                                <option value="strength">Build Strength</option>
+                                <option value="flexibility">Increase Flexibility</option>
+                                <option value="general">General Fitness</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-member btn-full">
+                        <i class="fas fa-user-plus"></i>
+                        Register
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function uncheckOthers(checkbox) {
+            if(checkbox.checked) {
+                document.querySelectorAll('.plan-checkbox').forEach(function(cb) {
+                    if (cb !== checkbox) cb.checked = false;
+                });
+            }
+        }
+        
+        // Login Functions
+        function toggleMemberPassword() {
+            const passwordInput = document.getElementById('memberPassword');
+            const toggleIcon = document.getElementById('memberToggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        document.getElementById('memberLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('memberUsername').value.trim();
+            const password = document.getElementById('memberPassword').value;
+
+            if (!username || !password) {
+                alert('Please enter both username and password.');
+                return;
+            }
+
+            // Show loading state on the correct button
+            const submitBtn = document.querySelector('#memberLoginForm button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+            submitBtn.disabled = true;
+
+            // Simulate login process (replace with real API call when backend is ready)
+            setTimeout(() => {
+                window.location.href = 'member-dashboard.html';
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Registration Functions
+        function showRegistrationForm() {
+            document.getElementById('registrationModal').style.display = 'flex';
+        }
+
+        function closeRegistrationModal() {
+            document.getElementById('registrationModal').style.display = 'none';
+        }
+
+        function toggleRegPassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('regToggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Phone number validation - only allow numbers and limit to 10 digits
+        document.getElementById('phone').addEventListener('input', function(e) {
+            // Remove any non-numeric characters
+            let value = e.target.value.replace(/[^0-9]/g, '');
+            
+            // Limit to 10 digits
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+            
+            e.target.value = value;
+        });
+
+        // Phone number validation - prevent paste of non-numeric characters
+        document.getElementById('phone').addEventListener('paste', function(e) {
+            e.preventDefault();
+            
+            // Get pasted data
+            let pastedData = (e.clipboardData || window.clipboardData).getData('text');
+            
+            // Remove any non-numeric characters and limit to 10 digits
+            let cleanData = pastedData.replace(/[^0-9]/g, '').substring(0, 10);
+            
+            // Insert the cleaned data
+            document.execCommand('insertText', false, cleanData);
+        });
+
+        function toggleConfirmPassword() {
+            const passwordInput = document.getElementById('confirmPassword');
+            const toggleIcon = document.getElementById('confirmToggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const phone = document.getElementById('phone').value;
+            
+            // Phone number validation - must be exactly 10 digits
+            if (!/^[0-9]{10}$/.test(phone)) {
+                console.log('Phone number must be exactly 10 digits.');
+                alert('Phone number must be exactly 10 digits.');
+                return;
+            }
+            
+            // Password validation
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                document.getElementById('confirmPassword').value = '';
+                document.getElementById('confirmPassword').focus();
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                document.getElementById('password').focus();
+                return;
+            }
+            
+            // Collect member data from registration form
+            const memberData = {
+                fullName: document.getElementById('fullName').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                username: document.getElementById('username').value,
+                height: parseFloat(document.getElementById('height').value),
+                weight: parseFloat(document.getElementById('weight').value),
+                fitnessGoal: document.getElementById('fitnessGoal').value,
+                registrationDate: new Date().toISOString().split('T')[0]
+            };
+            
+            // Show loading state
+            const submitBtn = document.querySelector('#registrationForm .btn-member');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
+            submitBtn.disabled = true;
+            
+            // Simulate registration process
+            setTimeout(() => {
+                // Save member data to localStorage (this will be used as starting weight in progress tracking)
+                localStorage.setItem('memberData', JSON.stringify(memberData));
+                
+                console.log('Registration successful! Please wait for admin approval.');
+                closeRegistrationModal();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Reset form
+                document.getElementById('registrationForm').reset();
+            }, 2000);
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('registrationModal');
+            if (event.target == modal) {
+                closeRegistrationModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GetFit Online Fitness Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GetFit</span>
+            </div>
+            <div class="system-name">
+                <h1>Admin Dashboard</h1>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-members.html">
+                            <i class="fas fa-users"></i>
+                            Members
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-trainers.html">
+                            <i class="fas fa-user-tie"></i>
+                            Trainers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-memberships.html">
+                            <i class="fas fa-id-card"></i>
+                            Memberships
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Dashboard Overview -->
+            <section class="dashboard-overview">
+                <h2>Dashboard Overview</h2>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Members</h3>
+                            <p class="stat-number">1,247</p>
+                            <span class="stat-change positive">+12% this month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Active Memberships</h3>
+                            <p class="stat-number">892</p>
+                            <span class="stat-change positive">71.5% of total</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Expired Memberships</h3>
+                            <p class="stat-number">355</p>
+                            <span class="stat-change negative">28.5% need renewal</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Trainers</h3>
+                            <p class="stat-number">24</p>
+                            <span class="stat-change neutral">3 new this month</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer" class="modal-container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(title, content) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').innerHTML = content;
+            document.getElementById('modalContainer').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modalContainer').style.display = 'none';
+        }
+
+        // Admin action functions
+        function showPendingRegistrations() {
+            const content = `
+                <div class="pending-registrations">
+                    <div class="registration-item">
+                        <div class="user-info">
+                            <i class="fas fa-user-circle"></i>
+                            <div>
+                                <h4>John Doe</h4>
+                                <p>john.doe@email.com | +1 234-567-8900</p>
+                            </div>
+                        </div>
+                        <div class="registration-actions">
+                            <button class="btn btn-success" onclick="approveRegistration('John Doe')">
+                                <i class="fas fa-check"></i> Approve
+                            </button>
+                            <button class="btn btn-danger" onclick="rejectRegistration('John Doe')">
+                                <i class="fas fa-times"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                    <div class="registration-item">
+                        <div class="user-info">
+                            <i class="fas fa-user-circle"></i>
+                            <div>
+                                <h4>Jane Smith</h4>
+                                <p>jane.smith@email.com | +1 234-567-8901</p>
+                            </div>
+                        </div>
+                        <div class="registration-actions">
+                            <button class="btn btn-success" onclick="approveRegistration('Jane Smith')">
+                                <i class="fas fa-check"></i> Approve
+                            </button>
+                            <button class="btn btn-danger" onclick="rejectRegistration('Jane Smith')">
+                                <i class="fas fa-times"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            openModal('Pending Registrations', content);
+        }
+
+        function showMembershipPlans() {
+            const content = `
+                <div class="membership-plans">
+                    <button class="btn btn-admin" onclick="addNewPlan()">
+                        <i class="fas fa-plus"></i> Add New Plan
+                    </button>
+                    <div class="plans-list">
+                        <div class="plan-item">
+                            <h4>Basic Plan</h4>
+                            <p>$29/month - Access to gym equipment</p>
+                            <button class="btn btn-small" onclick="editPlan('Basic')">Edit</button>
+                        </div>
+                        <div class="plan-item">
+                            <h4>Premium Plan</h4>
+                            <p>$59/month - Gym + Personal Trainer</p>
+                            <button class="btn btn-small" onclick="editPlan('Premium')">Edit</button>
+                        </div>
+                        <div class="plan-item">
+                            <h4>VIP Plan</h4>
+                            <p>$99/month - All features + Nutrition plan</p>
+                            <button class="btn btn-small" onclick="editPlan('VIP')">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            openModal('Membership Plans', content);
+        }
+
+        function showTrainerAssignment() {
+            const content = `
+                <div class="trainer-assignment">
+                    <div class="assignment-form">
+                        <label>Select Member:</label>
+                        <select class="form-control">
+                            <option>John Doe</option>
+                            <option>Jane Smith</option>
+                            <option>Mike Wilson</option>
+                        </select>
+                        <label>Select Trainer:</label>
+                        <select class="form-control">
+                            <option>Sarah Johnson</option>
+                            <option>Tom Davis</option>
+                            <option>Lisa Anderson</option>
+                        </select>
+                        <button class="btn btn-admin" onclick="assignTrainer()">
+                            <i class="fas fa-link"></i> Assign Trainer
+                        </button>
+                    </div>
+                </div>
+            `;
+            openModal('Assign Trainer to Member', content);
+        }
+
+        function showTrainerManagement() {
+            const content = `
+                <div class="trainer-management">
+                    <button class="btn btn-admin" onclick="addNewTrainer()">
+                        <i class="fas fa-plus"></i> Add New Trainer
+                    </button>
+                    <div class="trainers-list">
+                        <div class="trainer-item">
+                            <div class="trainer-info">
+                                <i class="fas fa-user-tie"></i>
+                                <div>
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Specialization: Weight Training | Experience: 5 years</p>
+                                </div>
+                            </div>
+                            <div class="trainer-actions">
+                                <button class="btn btn-small" onclick="editTrainer('Sarah')">Edit</button>
+                                <button class="btn btn-danger btn-small" onclick="removeTrainer('Sarah')">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            openModal('Manage Trainers', content);
+        }
+
+        function showMemberManagement() {
+            const content = `
+                <div class="member-management">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search members..." class="form-control">
+                        <button class="btn btn-admin">Search</button>
+                    </div>
+                    <div class="members-list">
+                        <div class="member-item">
+                            <div class="member-info">
+                                <i class="fas fa-user"></i>
+                                <div>
+                                    <h4>John Doe</h4>
+                                    <p>Member ID: #001 | Plan: Premium | Status: Active</p>
+                                </div>
+                            </div>
+                            <div class="member-actions">
+                                <button class="btn btn-small" onclick="editMember('John')">Edit</button>
+                                <button class="btn btn-danger btn-small" onclick="removeMember('John')">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            openModal('Manage Members', content);
+        }
+
+        function showSystemSettings() {
+            const content = `
+                <div class="system-settings">
+                    <div class="setting-group">
+                        <h4>General Settings</h4>
+                        <label>
+                            <input type="checkbox"> Enable email notifications
+                        </label>
+                        <label>
+                            <input type="checkbox"> Allow self-registration
+                        </label>
+                    </div>
+                    <div class="setting-group">
+                        <h4>Membership Settings</h4>
+                        <label>Default Membership Duration (days):</label>
+                        <input type="number" value="30" class="form-control">
+                    </div>
+                    <button class="btn btn-admin" onclick="saveSettings()">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                </div>
+            `;
+            openModal('System Settings', content);
+        }
+
+        // Action functions
+        function approveRegistration(name) {
+            console.log(`${name} has been approved!`);
+            closeModal();
+        }
+
+        function rejectRegistration(name) {
+            console.log(`${name} has been rejected!`);
+            closeModal();
+        }
+
+        function assignTrainer() {
+            console.log('Trainer assigned successfully!');
+            closeModal();
+        }
+
+        function addNewPlan() {
+            console.log('Add new plan functionality');
+        }
+
+        function editPlan(plan) {
+            console.log(`Edit ${plan} plan functionality`);
+        }
+
+        function addNewTrainer() {
+            console.log('Add new trainer functionality');
+        }
+
+        function editTrainer(trainer) {
+            console.log(`Edit ${trainer} functionality`);
+        }
+
+        function removeTrainer(trainer) {
+            console.log(`Remove ${trainer} functionality`);
+        }
+
+        function editMember(member) {
+            console.log(`Edit ${member} functionality`);
+        }
+
+        function removeMember(member) {
+            console.log(`Remove ${member} functionality`);
+        }
+
+        function saveSettings() {
+            console.log('Settings saved successfully!');
+            closeModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalContainer');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

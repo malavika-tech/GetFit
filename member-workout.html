@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plan - GetFit Online Fitness Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <span>GetFit</span>
+            </div>
+            <div class="system-name">
+                <h1>Workout Plan</h1>
+            </div>
+        </div>
+        <div class="header-right">
+
+            <div class="user-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>John Doe</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="member-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-profile.html">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-membership.html">
+                            <i class="fas fa-id-card"></i>
+                            Membership
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="member-workout.html">
+                            <i class="fas fa-dumbbell"></i>
+                            Workout Plan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-diet.html">
+                            <i class="fas fa-utensils"></i>
+                            Diet Plan
+                        </a>
+                    </li>
+                                        <li>
+                        <a href="member-progress.html">
+                            <i class="fas fa-chart-line"></i>
+                            Progress
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-trainer.html">
+                            <i class="fas fa-user-tie"></i>
+                            My Trainer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Workout Plan -->
+            <style>
+            .workout-plan-container {
+                background: #f8f9fa;
+                padding: 30px;
+                border-radius: 8px;
+                font-family: 'Inter', sans-serif;
+                margin-top: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+            .workout-plan-container h1 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+                color: #333;
+            }
+            .workout-summary-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 12px 0;
+                font-size: 1.1rem;
+                color: #555;
+                border-bottom: 1px solid #ddd;
+            }
+            .workout-summary-row:last-of-type {
+                border-bottom: none;
+            }
+            .exercise-list-title {
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-top: 25px;
+                margin-bottom: 20px;
+                color: #000;
+            }
+            .exercise-card {
+                background: #eef1f6;
+                border-radius: 12px;
+                padding: 18px 25px;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+            }
+            .exercise-icon {
+                color: #28a745;
+                font-size: 1.4rem;
+                margin-right: 20px;
+            }
+            .exercise-text {
+                flex-grow: 1;
+                text-align: right;
+                font-size: 1.1rem;
+                color: #333;
+            }
+            </style>
+
+            <section class="workout-section">
+                <div class="workout-plan-container">
+                    <h1>Workout Plan</h1>
+                    
+                    <div class="workout-summary-row">
+                        <div>Duration:</div>
+                        <div>45 minutes</div>
+                    </div>
+                    <div class="workout-summary-row" style="margin-top: 15px;">
+                        <div>Days per Week:</div>
+                        <div>4 days (Mon, Wed, Fri, Sat)</div>
+                    </div>
+                    
+                    <div class="exercise-list-title">Exercise List:</div>
+                    
+                    <div class="exercise-card">
+                        <i class="fas fa-check-circle exercise-icon"></i>
+                        <div class="exercise-text">Bench Press - 4 sets x 12 reps</div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <i class="fas fa-check-circle exercise-icon"></i>
+                        <div class="exercise-text">Squats - 4 sets x 15 reps</div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <i class="fas fa-check-circle exercise-icon"></i>
+                        <div class="exercise-text">Shoulder Press - 3 sets x 10 reps</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Read assigned workout plan from localStorage (set by trainer)
+        document.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('assignedWorkoutPlan');
+            if (!saved) return;
+
+            const plan = JSON.parse(saved);
+
+            // Update duration and days per week
+            const rows = document.querySelectorAll('.workout-summary-row div:last-child');
+            if (rows[0]) rows[0].textContent = plan.duration;
+            if (rows[1]) rows[1].textContent = plan.daysPerWeek;
+
+            // Rebuild exercise cards
+            const container = document.querySelector('.workout-plan-container');
+            const oldCards = container.querySelectorAll('.exercise-card');
+            oldCards.forEach(c => c.remove());
+
+            const titleEl = container.querySelector('.exercise-list-title');
+
+            plan.exercises.forEach(function(ex) {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+                card.innerHTML = `<i class="fas fa-check-circle exercise-icon"></i><div class="exercise-text">${ex}</div>`;
+                container.appendChild(card);
+            });
+
+            // Show assigned date
+            const note = document.createElement('p');
+            note.style.cssText = 'margin-top:20px; color:#888; font-size:0.9rem;';
+            note.textContent = `Assigned by your trainer on ${plan.assignedAt}`;
+            container.appendChild(note);
+        });
+    </script>
+</body>
+</html>

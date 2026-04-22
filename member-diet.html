@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan - GetFit Online Fitness Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <span>GetFit</span>
+            </div>
+            <div class="system-name">
+                <h1>Diet Plan</h1>
+            </div>
+        </div>
+        <div class="header-right">
+
+            <div class="user-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>John Doe</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="member-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-profile.html">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-membership.html">
+                            <i class="fas fa-id-card"></i>
+                            Membership
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-workout.html">
+                            <i class="fas fa-dumbbell"></i>
+                            Workout Plan
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="member-diet.html">
+                            <i class="fas fa-utensils"></i>
+                            Diet Plan
+                        </a>
+                    </li>
+                                        <li>
+                        <a href="member-progress.html">
+                            <i class="fas fa-chart-line"></i>
+                            Progress
+                        </a>
+                    </li>
+                    <li>
+                        <a href="member-trainer.html">
+                            <i class="fas fa-user-tie"></i>
+                            My Trainer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <style>
+            .diet-plan-container {
+                background: #f8f9fa;
+                padding: 30px;
+                border-radius: 8px;
+                font-family: 'Inter', sans-serif;
+                margin-top: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+            .diet-plan-summary-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 0;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 15px;
+                font-size: 1.1rem;
+            }
+            .meal-schedule-title {
+                font-size: 1.3rem;
+                font-weight: bold;
+                margin-top: 15px;
+                margin-bottom: 20px;
+                color: #000;
+            }
+            .meal-card {
+                background: #eaf5ee;
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .meal-left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 25%;
+            }
+            .meal-icon { color: #e91e63; font-size: 2.2rem; margin-bottom: 10px; }
+            .meal-time-label { font-weight: 500; color: #333; font-size: 1.1rem; }
+            .meal-right {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                width: 70%;
+            }
+            .meal-food { font-size: 1.1rem; color: #333; text-align: right; margin-bottom: 8px; }
+            .meal-cal { font-size: 0.95rem; color: #888; }
+            </style>
+
+            <section class="diet-section">
+                <div id="dietPlanContainer" class="diet-plan-container">
+                    <h1>Diet Plan</h1>
+                    <div class="diet-plan-summary-row">
+                        <div><span style="color:#666;">Daily Calories:</span></div>
+                        <div><strong id="dailyCalDisplay">2,200 kcal</strong></div>
+                    </div>
+                    <div class="meal-schedule-title">Meal Schedule:</div>
+                    <div id="mealCardsContainer"></div>
+                    <p id="assignedNote" style="margin-top:20px; color:#888; font-size:0.9rem;"></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Meal icons matching the trainer page
+        const mealIcons = [
+            'fas fa-certificate',
+            'fas fa-apple-alt',
+            'fas fa-certificate',
+            'fas fa-apple-alt',
+            'fas fa-moon'
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('assignedDietPlan');
+
+            // Default meals if nothing assigned yet
+            const defaultMeals = [
+                { time: 'Breakfast (7:00 AM)', food: 'Oatmeal with fruits, Greek yogurt, honey', calories: '450' },
+                { time: 'Snack (10:00 AM)',    food: 'Protein shake, almonds',                   calories: '250' },
+                { time: 'Lunch (1:00 PM)',     food: 'Grilled chicken salad, brown rice',         calories: '550' },
+                { time: 'Snack (4:00 PM)',     food: 'Apple, peanut butter',                      calories: '200' },
+                { time: 'Dinner (7:00 PM)',    food: 'Salmon, vegetables, quinoa',                calories: '750' }
+            ];
+
+            const plan = saved ? JSON.parse(saved) : { dailyCalories: '2,200', meals: defaultMeals, assignedAt: null };
+
+            // Update daily calories
+            document.getElementById('dailyCalDisplay').textContent = plan.dailyCalories + ' kcal';
+
+            // Render meal cards
+            const container = document.getElementById('mealCardsContainer');
+            container.innerHTML = '';
+            plan.meals.forEach(function(meal, i) {
+                if (!meal.food) return;
+                const icon = mealIcons[i] || 'fas fa-utensils';
+                const card = document.createElement('div');
+                card.className = 'meal-card';
+                card.innerHTML = `
+                    <div class="meal-left">
+                        <i class="${icon} meal-icon"></i>
+                        <span class="meal-time-label">${meal.time}</span>
+                    </div>
+                    <div class="meal-right">
+                        <div class="meal-food">${meal.food}</div>
+                        <div class="meal-cal">${meal.calories} calories</div>
+                    </div>`;
+                container.appendChild(card);
+            });
+
+            // Show assigned date note
+            if (plan.assignedAt) {
+                document.getElementById('assignedNote').textContent = 'Assigned by your trainer on ' + plan.assignedAt;
+            }
+        });
+    </script>
+</body>
+</html>

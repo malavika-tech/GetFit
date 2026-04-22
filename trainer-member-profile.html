@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Profile - GetFit Online Fitness Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GetFit</span>
+            </div>
+            <div class="system-name">
+                <h1>Trainer Dashboard</h1>
+            </div>
+        </div>
+        <div class="header-right">
+
+            <div class="user-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Sarah Johnson</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="trainer-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="trainer-members.html">
+                            <i class="fas fa-users"></i>
+                            My Members
+                        </a>
+                    </li>
+                    </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Member Profile</h1>
+                <div class="header-actions">
+                    <button class="btn btn-small btn-admin" onclick="window.location.href='trainer-members.html'">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Members
+                    </button>
+                </div>
+            </div>
+
+            <!-- Member Information Card -->
+            <section class="member-info-section">
+                <div class="section-header">
+                    <h2>Member Information</h2>
+                </div>
+                <div class="info-card">
+                    <div class="info-row">
+                        <div class="info-label">Member Name:</div>
+                        <div class="info-value">John Doe</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Member ID:</div>
+                        <div class="info-value">M001</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Age:</div>
+                        <div class="info-value">28 years</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Gender:</div>
+                        <div class="info-value">Male</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Phone Number:</div>
+                        <div class="info-value">+1 234-567-8900</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">john.doe@email.com</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Fitness Details Card -->
+            <section class="fitness-details-section">
+                <div class="section-header">
+                    <h2>Fitness Details</h2>
+                </div>
+                <div class="info-card">
+                    <div class="info-row">
+                        <div class="info-label">Height:</div>
+                        <div class="info-value">5'10" (178 cm)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Current Weight:</div>
+                        <div class="info-value">79 kg</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">BMI:</div>
+                        <div class="info-value">24.9 (Normal)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Fitness Goal:</div>
+                        <div class="info-value">Muscle Gain</div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Progress Information Card -->
+            <section class="progress-info-section">
+                <div class="section-header">
+                    <h2>Progress Information</h2>
+                </div>
+                <div class="info-card">
+                    <div class="info-row">
+                        <div class="info-label">Starting Weight:</div>
+                        <div class="info-value" id="trainerStartingWeight">82 kg</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Current Weight:</div>
+                        <div class="info-value" id="trainerCurrentWeight">79 kg</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Weight Change:</div>
+                        <div class="info-value"><span id="trainerWeightChange" class="positive-change">-3 kg</span></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Last Progress Update:</div>
+                        <div class="info-value" id="trainerLastUpdate">March 14, 2024</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Read member registration data (starting weight)
+            const memberData = JSON.parse(localStorage.getItem('memberData') || '{}');
+            const startingWeight = parseFloat(memberData.weight) || 82;
+
+            // Read latest progress entry (current weight)
+            const progressHistory = JSON.parse(localStorage.getItem('progressHistory') || '[]');
+            progressHistory.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+
+            const latestEntry = progressHistory.length > 0 ? progressHistory[0] : null;
+            const currentWeight = latestEntry ? parseFloat(latestEntry.weight) : startingWeight;
+            const weightChange = (currentWeight - startingWeight).toFixed(1);
+            const lastUpdate = latestEntry
+                ? new Date(latestEntry.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+                : 'No updates yet';
+
+            // Update the DOM
+            document.getElementById('trainerStartingWeight').textContent = startingWeight + ' kg';
+            document.getElementById('trainerCurrentWeight').textContent = currentWeight.toFixed(1) + ' kg';
+
+            const changeEl = document.getElementById('trainerWeightChange');
+            changeEl.textContent = (weightChange >= 0 ? '+' : '') + weightChange + ' kg';
+            changeEl.className = weightChange < 0 ? 'positive-change' : weightChange > 0 ? 'negative-change' : '';
+
+            document.getElementById('trainerLastUpdate').textContent = lastUpdate;
+        });
+    </script>
+</body>
+</html>
+
