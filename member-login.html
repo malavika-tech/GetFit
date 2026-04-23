@@ -187,19 +187,19 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>
+                            <label for="plan-monthly">
                                 <i class="fas fa-id-card"></i>
                                 Membership Plan
                             </label>
-                            <div class="checkbox-group" style="display: flex; gap: 15px; margin-top: 10px;">
-                                <label style="font-weight: normal; display: flex; align-items: center; gap: 5px;">
-                                    <input type="checkbox" name="membershipPlan" value="monthly" class="plan-checkbox" onclick="uncheckOthers(this)"> Monthly
+                            <div style="display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap;">
+                                <label style="font-weight: normal; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #333; font-size: 0.95rem;">
+                                    <input type="radio" name="membershipPlan" value="monthly" id="plan-monthly" class="plan-radio" style="display: inline-block !important; width: auto !important; height: auto !important; visibility: visible !important; opacity: 1 !important; position: static !important; appearance: auto !important; -webkit-appearance: radio !important; accent-color: #4a90d9; cursor: pointer;"> Monthly
                                 </label>
-                                <label style="font-weight: normal; display: flex; align-items: center; gap: 5px;">
-                                    <input type="checkbox" name="membershipPlan" value="quarterly" class="plan-checkbox" onclick="uncheckOthers(this)"> Quarterly
+                                <label style="font-weight: normal; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #333; font-size: 0.95rem;">
+                                    <input type="radio" name="membershipPlan" value="quarterly" class="plan-radio" style="display: inline-block !important; width: auto !important; height: auto !important; visibility: visible !important; opacity: 1 !important; position: static !important; appearance: auto !important; -webkit-appearance: radio !important; accent-color: #4a90d9; cursor: pointer;"> Quarterly
                                 </label>
-                                <label style="font-weight: normal; display: flex; align-items: center; gap: 5px;">
-                                    <input type="checkbox" name="membershipPlan" value="yearly" class="plan-checkbox" onclick="uncheckOthers(this)"> Yearly
+                                <label style="font-weight: normal; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #333; font-size: 0.95rem;">
+                                    <input type="radio" name="membershipPlan" value="yearly" class="plan-radio" style="display: inline-block !important; width: auto !important; height: auto !important; visibility: visible !important; opacity: 1 !important; position: static !important; appearance: auto !important; -webkit-appearance: radio !important; accent-color: #4a90d9; cursor: pointer;"> Yearly
                                 </label>
                             </div>
                         </div>
@@ -249,13 +249,7 @@
     </div>
 
     <script>
-        function uncheckOthers(checkbox) {
-            if(checkbox.checked) {
-                document.querySelectorAll('.plan-checkbox').forEach(function(cb) {
-                    if (cb !== checkbox) cb.checked = false;
-                });
-            }
-        }
+        // Radio buttons handle mutual exclusion natively — no extra JS needed
         
         // Login Functions
         function toggleMemberPassword() {
@@ -393,7 +387,10 @@
             }
             
             // Collect member data from registration form
+            const selectedPlan = document.querySelector('input[name="membershipPlan"]:checked');
+            const membershipPlan = selectedPlan ? selectedPlan.value : 'monthly';
             const memberData = {
+                id: 'M001',
                 fullName: document.getElementById('fullName').value,
                 age: document.getElementById('age').value,
                 gender: document.getElementById('gender').value,
@@ -403,6 +400,7 @@
                 height: parseFloat(document.getElementById('height').value),
                 weight: parseFloat(document.getElementById('weight').value),
                 fitnessGoal: document.getElementById('fitnessGoal').value,
+                membershipPlan: membershipPlan,
                 registrationDate: new Date().toISOString().split('T')[0]
             };
             

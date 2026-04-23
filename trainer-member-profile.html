@@ -22,7 +22,7 @@
 
             <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>Sarah Johnson</span>
+                <span>Trainer</span>
             </div>
         </div>
     </header>
@@ -73,30 +73,30 @@
                     <h2>Member Information</h2>
                 </div>
                 <div class="info-card">
-                    <div class="info-row">
-                        <div class="info-label">Member Name:</div>
-                        <div class="info-value">John Doe</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Member ID:</div>
-                        <div class="info-value">M001</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Age:</div>
-                        <div class="info-value">28 years</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Gender:</div>
-                        <div class="info-value">Male</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Phone Number:</div>
-                        <div class="info-value">+1 234-567-8900</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Email:</div>
-                        <div class="info-value">john.doe@email.com</div>
-                    </div>
+                <div class="info-row">
+                    <div class="info-label">Member Name:</div>
+                    <div class="info-value" id="memberNameDisplay">--</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Member ID:</div>
+                    <div class="info-value" id="memberIdDisplay">--</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Age:</div>
+                    <div class="info-value" id="memberAgeDisplay">--</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Gender:</div>
+                    <div class="info-value" id="memberGenderDisplay">--</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Phone Number:</div>
+                    <div class="info-value" id="memberPhoneDisplay">--</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value" id="memberEmailDisplay">--</div>
+                </div>
 
                 </div>
             </section>
@@ -109,19 +109,19 @@
                 <div class="info-card">
                     <div class="info-row">
                         <div class="info-label">Height:</div>
-                        <div class="info-value">5'10" (178 cm)</div>
+                        <div class="info-value" id="trainerHeight">--</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Current Weight:</div>
-                        <div class="info-value">79 kg</div>
+                        <div class="info-value" id="trainerFitnessWeight">--</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">BMI:</div>
-                        <div class="info-value">24.9 (Normal)</div>
+                        <div class="info-value" id="trainerBmi">--</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Fitness Goal:</div>
-                        <div class="info-value">Muscle Gain</div>
+                        <div class="info-value" id="trainerFitnessGoal">--</div>
                     </div>
                 </div>
             </section>
@@ -135,19 +135,19 @@
                 <div class="info-card">
                     <div class="info-row">
                         <div class="info-label">Starting Weight:</div>
-                        <div class="info-value" id="trainerStartingWeight">82 kg</div>
+                        <div class="info-value" id="trainerStartingWeight">--</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Current Weight:</div>
-                        <div class="info-value" id="trainerCurrentWeight">79 kg</div>
+                        <div class="info-value" id="trainerCurrentWeight">--</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Weight Change:</div>
-                        <div class="info-value"><span id="trainerWeightChange" class="positive-change">-3 kg</span></div>
+                        <div class="info-value"><span id="trainerWeightChange">--</span></div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Last Progress Update:</div>
-                        <div class="info-value" id="trainerLastUpdate">March 14, 2024</div>
+                        <div class="info-value" id="trainerLastUpdate">--</div>
                     </div>
                 </div>
             </section>
@@ -155,10 +155,35 @@
     </div>
 
     <script>
+        const goalLabels = {
+            'weight-loss': 'Weight Loss', 'muscle-gain': 'Muscle Gain',
+            'endurance': 'Improve Endurance', 'strength': 'Build Strength',
+            'flexibility': 'Increase Flexibility', 'general': 'General Fitness'
+        };
+
+        function bmiCategory(bmi) {
+            if (bmi < 18.5) return 'Underweight';
+            if (bmi < 25)   return 'Normal';
+            if (bmi < 30)   return 'Overweight';
+            return 'Obese';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Read member registration data (starting weight)
             const memberData = JSON.parse(localStorage.getItem('memberData') || '{}');
-            const startingWeight = parseFloat(memberData.weight) || 82;
+            
+            // Populate member info
+            if (memberData.fullName) {
+                document.getElementById('memberNameDisplay').textContent = memberData.fullName;
+                document.getElementById('memberIdDisplay').textContent = memberData.id || '--';
+                document.getElementById('memberAgeDisplay').textContent = (memberData.age || '--') + ' years';
+                document.getElementById('memberGenderDisplay').textContent = memberData.gender || '--';
+                document.getElementById('memberPhoneDisplay').textContent = memberData.phone || '--';
+                document.getElementById('memberEmailDisplay').textContent = memberData.email || '--';
+            }
+
+            const startingWeight = parseFloat(memberData.weight) || 0;
+            const height = parseFloat(memberData.height) || 0;
 
             // Read latest progress entry (current weight)
             const progressHistory = JSON.parse(localStorage.getItem('progressHistory') || '[]');
@@ -166,18 +191,36 @@
 
             const latestEntry = progressHistory.length > 0 ? progressHistory[0] : null;
             const currentWeight = latestEntry ? parseFloat(latestEntry.weight) : startingWeight;
-            const weightChange = (currentWeight - startingWeight).toFixed(1);
+            const weightChange = startingWeight ? (currentWeight - startingWeight).toFixed(1) : null;
             const lastUpdate = latestEntry
                 ? new Date(latestEntry.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
                 : 'No updates yet';
 
-            // Update the DOM
-            document.getElementById('trainerStartingWeight').textContent = startingWeight + ' kg';
-            document.getElementById('trainerCurrentWeight').textContent = currentWeight.toFixed(1) + ' kg';
+            // --- Fitness Details ---
+            if (height) {
+                document.getElementById('trainerHeight').textContent = height + ' cm';
+            }
+            document.getElementById('trainerFitnessWeight').textContent =
+                currentWeight ? currentWeight.toFixed(1) + ' kg' : (startingWeight ? startingWeight + ' kg' : '--');
+
+            if (height && currentWeight) {
+                const hm  = height / 100;
+                const bmi = (currentWeight / (hm * hm)).toFixed(1);
+                document.getElementById('trainerBmi').textContent = bmi + ' (' + bmiCategory(parseFloat(bmi)) + ')';
+            }
+
+            const goalLabel = goalLabels[memberData.fitnessGoal] || memberData.fitnessGoal || '--';
+            document.getElementById('trainerFitnessGoal').textContent = goalLabel;
+
+            // --- Progress Section ---
+            document.getElementById('trainerStartingWeight').textContent = startingWeight ? startingWeight + ' kg' : '--';
+            document.getElementById('trainerCurrentWeight').textContent  = currentWeight ? currentWeight.toFixed(1) + ' kg' : '--';
 
             const changeEl = document.getElementById('trainerWeightChange');
-            changeEl.textContent = (weightChange >= 0 ? '+' : '') + weightChange + ' kg';
-            changeEl.className = weightChange < 0 ? 'positive-change' : weightChange > 0 ? 'negative-change' : '';
+            if (weightChange !== null) {
+                changeEl.textContent = (weightChange >= 0 ? '+' : '') + weightChange + ' kg';
+                changeEl.className = weightChange < 0 ? 'positive-change' : weightChange > 0 ? 'negative-change' : '';
+            }
 
             document.getElementById('trainerLastUpdate').textContent = lastUpdate;
         });

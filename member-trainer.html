@@ -21,7 +21,7 @@
 
             <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>John Doe</span>
+                <span id="headerMemberName">Member</span>
             </div>
         </div>
     </header>
@@ -95,36 +95,36 @@
                                 <i class="fas fa-user-tie"></i>
                             </div>
                             <div class="trainer-info">
-                                <h3>Mike Johnson</h3>
+                                <h3 id="trainerName">No Trainer Assigned</h3>
                             </div>
                         </div>
                         <div class="trainer-details">
                             <div class="detail-item">
                                 <label>Specialization:</label>
-                                <span>Strength Training, Weight Loss, Nutrition</span>
+                                <span id="trainerSpec">--</span>
                             </div>
                             <div class="detail-item">
                                 <label>Experience:</label>
-                                <span>5 years</span>
+                                <span id="trainerExp">--</span>
                             </div>
                             <div class="detail-item">
                                 <label>Certification:</label>
-                                <span>ACE Certified Personal Trainer</span>
+                                <span id="trainerCert">--</span>
                             </div>
                         </div>
                         <div class="trainer-contact">
                             <h4>Contact Details</h4>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                <span>mike.johnson@getfit.com</span>
+                                <span id="trainerEmail">--</span>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-phone"></i>
-                                <span>+1 234-567-8900</span>
+                                <span id="trainerPhone">--</span>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-clock"></i>
-                                <span>Available: Mon-Fri, 6AM-8PM</span>
+                                <span id="trainerHours">Please contact admin for assignment</span>
                             </div>
                         </div>
 
@@ -151,7 +151,37 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            // Trainer page is already active
+            const memberData = JSON.parse(localStorage.getItem('memberData') || '{}');
+            if (memberData.fullName) {
+                document.getElementById('headerMemberName').textContent = memberData.fullName;
+            }
+
+            // Load assigned trainer (This should ideally come from a central data store or server)
+            const trainers = {};
+
+            const assignments = JSON.parse(localStorage.getItem('trainerAssignments') || '{}');
+            const memberId = memberData.id || 'M001';
+            const assignedTrainerId = assignments[memberId];
+
+            if (assignedTrainerId && trainers[assignedTrainerId]) {
+                const t = trainers[assignedTrainerId];
+                document.getElementById('trainerName').textContent = t.name;
+                document.getElementById('trainerSpec').textContent = t.spec;
+                document.getElementById('trainerExp').textContent = t.exp;
+                document.getElementById('trainerCert').textContent = t.cert;
+                document.getElementById('trainerEmail').textContent = t.email;
+                document.getElementById('trainerPhone').textContent = t.phone;
+                document.getElementById('trainerHours').textContent = 'Available: ' + t.hours;
+            } else {
+                // If no assignment, keep defaults or show "No trainer assigned"
+                document.getElementById('trainerName').textContent = 'No Trainer Assigned';
+                document.getElementById('trainerSpec').textContent = 'N/A';
+                document.getElementById('trainerExp').textContent = 'N/A';
+                document.getElementById('trainerCert').textContent = 'N/A';
+                document.getElementById('trainerEmail').textContent = 'N/A';
+                document.getElementById('trainerPhone').textContent = 'N/A';
+                document.getElementById('trainerHours').textContent = 'Please contact admin for assignment';
+            }
         });
     </script>
 </body>

@@ -22,7 +22,7 @@
 
             <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>Sarah Johnson</span>
+                <span>Trainer</span>
             </div>
         </div>
     </header>
@@ -137,43 +137,48 @@
 }
 </style>
 
+            <!-- Member Info Summary -->
+            <div style="background:#fff; border-radius:8px; padding:20px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                <h2 style="font-size:1.2rem; margin-bottom:15px; color:#333;">Member Information</h2>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; font-size:1rem;">
+                    <span style="color:#666;">Member Name:</span><strong id="wkMemberName">--</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; font-size:1rem;">
+                    <span style="color:#666;">Height:</span><strong id="wkMemberHeight">--</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; font-size:1rem;">
+                    <span style="color:#666;">Current Weight:</span><strong id="wkMemberWeight">--</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; font-size:1rem;">
+                    <span style="color:#666;">Fitness Goal:</span><strong id="wkMemberGoal">--</strong>
+                </div>
+            </div>
+
             <div class="workout-plan-container">
                 <h1>Workout Plan</h1>
 
                 <div class="workout-summary-row">
                     <div>Duration:</div>
-                    <div><input type="text" class="summary-input" value="45 minutes" style="width: 150px;"></div>
+                    <div><input type="text" class="summary-input" value="" placeholder="e.g. 45 minutes" style="width: 150px;"></div>
                 </div>
                 <div class="workout-summary-row" style="margin-top: 15px;">
                     <div>Days per Week:</div>
-                    <div><input type="text" class="summary-input" value="4 days (Mon, Wed, Fri, Sat)" style="width: 250px;"></div>
+                    <div><input type="text" class="summary-input" value="" placeholder="e.g. 4 days (Mon, Wed, Fri)" style="width: 250px;"></div>
                 </div>
                 
                 <div class="exercise-list-title">Exercise List:</div>
                 
-                <div class="exercise-card">
-                    <i class="fas fa-check-circle exercise-icon"></i>
-                    <input type="text" class="exercise-input" value="Bench Press - 4 sets x 12 reps" placeholder="Type exercise details...">
+                <div id="exerciseList">
+                    <div class="exercise-card">
+                        <i class="fas fa-check-circle exercise-icon"></i>
+                        <input type="text" class="exercise-input" value="" placeholder="Type exercise details...">
+                    </div>
                 </div>
 
-                <div class="exercise-card">
-                    <i class="fas fa-check-circle exercise-icon"></i>
-                    <input type="text" class="exercise-input" value="Squats - 4 sets x 15 reps" placeholder="Type exercise details...">
-                </div>
-
-                <div class="exercise-card">
-                    <i class="fas fa-check-circle exercise-icon"></i>
-                    <input type="text" class="exercise-input" value="Shoulder Press - 3 sets x 10 reps" placeholder="Type exercise details...">
-                </div>
-                
-                <div class="exercise-card">
-                    <i class="fas fa-check-circle exercise-icon"></i>
-                    <input type="text" class="exercise-input" value="" placeholder="Type exercise details...">
-                </div>
-                
-                <div class="exercise-card">
-                    <i class="fas fa-check-circle exercise-icon"></i>
-                    <input type="text" class="exercise-input" value="" placeholder="Type exercise details...">
+                <div style="text-align: center; margin-top: 10px;">
+                    <button type="button" onclick="addNewExercise()" style="background: #28a745; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
             </div>
 
@@ -196,9 +201,33 @@
     </div>
 
     <script>
+        const goalLabels = {
+            'weight-loss': 'Weight Loss', 'muscle-gain': 'Muscle Gain',
+            'endurance': 'Improve Endurance', 'strength': 'Build Strength',
+            'flexibility': 'Increase Flexibility', 'general': 'General Fitness'
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const d = JSON.parse(localStorage.getItem('memberData') || '{}');
+            const progressHistory = JSON.parse(localStorage.getItem('progressHistory') || '[]');
+            progressHistory.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+            const latestEntry   = progressHistory.length > 0 ? progressHistory[0] : null;
+            const regWeight     = parseFloat(d.weight) || 0;
+            const currentWeight = latestEntry ? parseFloat(latestEntry.weight) : regWeight;
+            const height        = parseFloat(d.height) || 0;
+
+            document.getElementById('wkMemberName').textContent   = d.fullName || 'Member';
+            document.getElementById('wkMemberHeight').textContent = height ? height + ' cm' : '--';
+            document.getElementById('wkMemberWeight').textContent = currentWeight ? currentWeight.toFixed(1) + ' kg' : '--';
+            const goalLabel = goalLabels[d.fitnessGoal] || d.fitnessGoal || '--';
+            document.getElementById('wkMemberGoal').textContent = goalLabel;
+        });
+
         // Assign workout plan function
         function assignWorkoutPlan() {
-            const confirmation = "Assign this Custom Workout Plan to John Doe?\n\nThis will replace their current workout plan.";
+            const d = JSON.parse(localStorage.getItem('memberData') || '{}');
+            const memberName = d.fullName || 'Member';
+            const confirmation = 'Assign this Custom Workout Plan to ' + memberName + '?\n\nThis will replace their current workout plan.';
 
             if (confirm(confirmation)) {
                 // Collect all input values
@@ -211,21 +240,36 @@
                 });
 
                 const summaryInputs = document.querySelectorAll('.summary-input');
-                const duration = summaryInputs[0] ? summaryInputs[0].value.trim() : '45 minutes';
+                const duration    = summaryInputs[0] ? summaryInputs[0].value.trim() : '45 minutes';
                 const daysPerWeek = summaryInputs[1] ? summaryInputs[1].value.trim() : '4 days';
 
                 // Save to localStorage so member dashboard can read it
                 const workoutPlan = {
-                    duration: duration,
-                    daysPerWeek: daysPerWeek,
-                    exercises: exercises,
-                    assignedAt: new Date().toLocaleDateString()
+                    duration:     duration,
+                    daysPerWeek:  daysPerWeek,
+                    exercises:    exercises,
+                    assignedAt:   new Date().toLocaleDateString()
                 };
                 localStorage.setItem('assignedWorkoutPlan', JSON.stringify(workoutPlan));
 
-                alert('Workout Plan assigned successfully to John Doe!');
+                alert('Workout Plan assigned successfully to ' + memberName + '!');
                 window.location.href = 'trainer-members.html';
             }
+        }
+
+        // Add new exercise card
+        function addNewExercise() {
+            const list = document.getElementById('exerciseList');
+            const newCard = document.createElement('div');
+            newCard.className = 'exercise-card';
+            newCard.innerHTML = `
+                <i class="fas fa-check-circle exercise-icon"></i>
+                <input type="text" class="exercise-input" value="" placeholder="Type exercise details...">
+            `;
+            list.appendChild(newCard);
+            
+            // Focus on the new input
+            newCard.querySelector('input').focus();
         }
     </script>
 </body>

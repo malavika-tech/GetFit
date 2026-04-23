@@ -19,10 +19,9 @@
             </div>
         </div>
         <div class="header-right">
-
             <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>John Doe</span>
+                <span id="headerMemberName">Member</span>
             </div>
         </div>
     </header>
@@ -62,7 +61,7 @@
                             Diet Plan
                         </a>
                     </li>
-                                        <li>
+                    <li>
                         <a href="member-progress.html">
                             <i class="fas fa-chart-line"></i>
                             Progress
@@ -92,33 +91,37 @@
                     <div class="profile-card">
                         <h2>Profile Information</h2>
                         <div class="profile-header">
-                            <div class="member-id">Member ID: M001</div>
+                            <div class="member-id">Member Account Details</div>
                         </div>
-                        <div class="member-name">John Doe</div>
+                        <div class="member-name" id="profileDisplayName">--</div>
                         <div class="profile-details">
                             <div class="detail-item">
                                 <label>Name:</label>
-                                <span>John Doe</span>
+                                <span id="profileName">--</span>
                             </div>
                             <div class="detail-item">
                                 <label>Age:</label>
-                                <span>28 years</span>
+                                <span id="profileAge">--</span>
                             </div>
                             <div class="detail-item">
                                 <label>Height:</label>
-                                <span>175 cm</span>
+                                <span id="profileHeight">--</span>
                             </div>
                             <div class="detail-item">
                                 <label>Weight:</label>
-                                <span>75 kg</span>
+                                <span id="profileWeight">--</span>
                             </div>
                             <div class="detail-item">
                                 <label>BMI:</label>
-                                <span>24.5 (Normal)</span>
+                                <span id="profileBmi">--</span>
                             </div>
                             <div class="detail-item">
-                                <label>Fitness Goals:</label>
-                                <span>Weight Loss & Muscle Building</span>
+                                <label>Fitness Goal:</label>
+                                <span id="profileGoal">--</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Membership Plan:</label>
+                                <span id="profilePlan">--</span>
                             </div>
                         </div>
                         <div class="button-container">
@@ -146,23 +149,30 @@
                 <form class="profile-form" id="editProfileForm">
                     <div class="form-group">
                         <label style="color: black;">Name</label>
-                        <input type="text" id="editName" value="John Doe" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                        <input type="text" id="editName" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
                     </div>
                     <div class="form-group">
                         <label style="color: black;">Age</label>
-                        <input type="number" id="editAge" value="28" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                        <input type="number" id="editAge" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
                     </div>
                     <div class="form-group">
                         <label style="color: black;">Height (cm)</label>
-                        <input type="number" id="editHeight" value="175" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                        <input type="number" id="editHeight" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
                     </div>
                     <div class="form-group">
                         <label style="color: black;">Weight (kg)</label>
-                        <input type="number" id="editWeight" value="75" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                        <input type="number" id="editWeight" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
                     </div>
                     <div class="form-group">
-                        <label style="color: black;">Fitness Goals</label>
-                        <input type="text" id="editGoals" value="Weight Loss & Muscle Building" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                        <label style="color: black;">Fitness Goal</label>
+                        <select id="editGoals" style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="muscle-gain">Muscle Gain</option>
+                            <option value="endurance">Improve Endurance</option>
+                            <option value="strength">Build Strength</option>
+                            <option value="flexibility">Increase Flexibility</option>
+                            <option value="general">General Fitness</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">
                         Save Changes
@@ -173,6 +183,22 @@
     </div>
 
     <script>
+        const goalLabels = {
+            'weight-loss':  'Weight Loss',
+            'muscle-gain':  'Muscle Gain',
+            'endurance':    'Improve Endurance',
+            'strength':     'Build Strength',
+            'flexibility':  'Increase Flexibility',
+            'general':      'General Fitness'
+        };
+
+        function bmiCategory(bmi) {
+            if (bmi < 18.5) return 'Underweight';
+            if (bmi < 25)   return 'Normal';
+            if (bmi < 30)   return 'Overweight';
+            return 'Obese';
+        }
+
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
                 window.location.href = 'index.html';
@@ -180,6 +206,13 @@
         }
 
         function editProfile() {
+            const d = JSON.parse(localStorage.getItem('memberData') || '{}');
+            document.getElementById('editName').value   = d.fullName || '';
+            document.getElementById('editAge').value    = d.age      || '';
+            document.getElementById('editHeight').value = d.height   || '';
+            document.getElementById('editWeight').value = d.weight   || '';
+            const sel = document.getElementById('editGoals');
+            if (d.fitnessGoal) sel.value = d.fitnessGoal;
             document.getElementById('editProfileModal').style.display = 'flex';
         }
 
@@ -189,15 +222,50 @@
 
         document.getElementById('editProfileForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // In a real app we'd update DOM or send to server
+            const d = JSON.parse(localStorage.getItem('memberData') || '{}');
+            d.fullName    = document.getElementById('editName').value;
+            d.age         = document.getElementById('editAge').value;
+            d.height      = parseFloat(document.getElementById('editHeight').value);
+            d.weight      = parseFloat(document.getElementById('editWeight').value);
+            d.fitnessGoal = document.getElementById('editGoals').value;
+            localStorage.setItem('memberData', JSON.stringify(d));
+            renderProfile(d);
             alert('Profile updated successfully!');
             closeEditProfileModal();
         });
 
-        // Initialize page
+        function renderProfile(d) {
+            const h   = parseFloat(d.height) || 0;
+            const w   = parseFloat(d.weight) || 0;
+            const hm  = h / 100;
+            const bmi = (h && w) ? (w / (hm * hm)).toFixed(1) : '--';
+            const bmiLabel  = (h && w) ? bmiCategory(parseFloat(bmi)) : '';
+            const goalLabel = goalLabels[d.fitnessGoal] || d.fitnessGoal || '--';
+            const planLabel = d.membershipPlan
+                ? d.membershipPlan.charAt(0).toUpperCase() + d.membershipPlan.slice(1)
+                : '--';
+
+            document.getElementById('headerMemberName').textContent   = d.fullName || 'Member';
+            document.getElementById('profileDisplayName').textContent  = d.fullName || '--';
+            document.getElementById('profileName').textContent    = d.fullName || '--';
+            document.getElementById('profileAge').textContent     = d.age ? d.age + ' years' : '--';
+            document.getElementById('profileHeight').textContent  = h ? h + ' cm' : '--';
+            document.getElementById('profileWeight').textContent  = w ? w + ' kg' : '--';
+            document.getElementById('profileBmi').textContent     = (h && w) ? bmi + ' (' + bmiLabel + ')' : '--';
+            document.getElementById('profileGoal').textContent    = goalLabel;
+            document.getElementById('profilePlan').textContent    = planLabel;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Profile page is already active
+            const d = JSON.parse(localStorage.getItem('memberData') || '{}');
+            renderProfile(d);
         });
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('editProfileModal');
+            if (event.target === modal) closeEditProfileModal();
+        };
     </script>
 </body>
 </html>

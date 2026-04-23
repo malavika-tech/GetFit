@@ -56,6 +56,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="admin-assign-trainer.html">
+                            <i class="fas fa-user-plus"></i>
+                            Assign Trainer
+                        </a>
+                    </li>
+                    <li>
                         <a href="admin-settings.html">
                             <i class="fas fa-cog"></i>
                             Settings
@@ -85,8 +91,8 @@
                         </div>
                         <div class="stat-content">
                             <h3>Total Members</h3>
-                            <p class="stat-number">1,247</p>
-                            <span class="stat-change positive">+12% this month</span>
+                            <p class="stat-number">0</p>
+                            <span class="stat-change neutral">No new members</span>
                         </div>
                     </div>
 
@@ -96,8 +102,8 @@
                         </div>
                         <div class="stat-content">
                             <h3>Active Memberships</h3>
-                            <p class="stat-number">892</p>
-                            <span class="stat-change positive">71.5% of total</span>
+                            <p class="stat-number">0</p>
+                            <span class="stat-change neutral">0% of total</span>
                         </div>
                     </div>
 
@@ -107,8 +113,8 @@
                         </div>
                         <div class="stat-content">
                             <h3>Expired Memberships</h3>
-                            <p class="stat-number">355</p>
-                            <span class="stat-change negative">28.5% need renewal</span>
+                            <p class="stat-number">0</p>
+                            <span class="stat-change neutral">None pending</span>
                         </div>
                     </div>
 
@@ -118,8 +124,8 @@
                         </div>
                         <div class="stat-content">
                             <h3>Total Trainers</h3>
-                            <p class="stat-number">24</p>
-                            <span class="stat-change neutral">3 new this month</span>
+                            <p class="stat-number">0</p>
+                            <span class="stat-change neutral">No new trainers</span>
                         </div>
                     </div>
                 </div>
@@ -159,40 +165,7 @@
         function showPendingRegistrations() {
             const content = `
                 <div class="pending-registrations">
-                    <div class="registration-item">
-                        <div class="user-info">
-                            <i class="fas fa-user-circle"></i>
-                            <div>
-                                <h4>John Doe</h4>
-                                <p>john.doe@email.com | +1 234-567-8900</p>
-                            </div>
-                        </div>
-                        <div class="registration-actions">
-                            <button class="btn btn-success" onclick="approveRegistration('John Doe')">
-                                <i class="fas fa-check"></i> Approve
-                            </button>
-                            <button class="btn btn-danger" onclick="rejectRegistration('John Doe')">
-                                <i class="fas fa-times"></i> Reject
-                            </button>
-                        </div>
-                    </div>
-                    <div class="registration-item">
-                        <div class="user-info">
-                            <i class="fas fa-user-circle"></i>
-                            <div>
-                                <h4>Jane Smith</h4>
-                                <p>jane.smith@email.com | +1 234-567-8901</p>
-                            </div>
-                        </div>
-                        <div class="registration-actions">
-                            <button class="btn btn-success" onclick="approveRegistration('Jane Smith')">
-                                <i class="fas fa-check"></i> Approve
-                            </button>
-                            <button class="btn btn-danger" onclick="rejectRegistration('Jane Smith')">
-                                <i class="fas fa-times"></i> Reject
-                            </button>
-                        </div>
-                    </div>
+                    <p style="text-align:center; padding: 2rem; color: #999;">No pending registrations at the moment.</p>
                 </div>
             `;
             openModal('Pending Registrations', content);
@@ -205,21 +178,7 @@
                         <i class="fas fa-plus"></i> Add New Plan
                     </button>
                     <div class="plans-list">
-                        <div class="plan-item">
-                            <h4>Basic Plan</h4>
-                            <p>$29/month - Access to gym equipment</p>
-                            <button class="btn btn-small" onclick="editPlan('Basic')">Edit</button>
-                        </div>
-                        <div class="plan-item">
-                            <h4>Premium Plan</h4>
-                            <p>$59/month - Gym + Personal Trainer</p>
-                            <button class="btn btn-small" onclick="editPlan('Premium')">Edit</button>
-                        </div>
-                        <div class="plan-item">
-                            <h4>VIP Plan</h4>
-                            <p>$99/month - All features + Nutrition plan</p>
-                            <button class="btn btn-small" onclick="editPlan('VIP')">Edit</button>
-                        </div>
+                        <p style="text-align:center; padding: 2rem; color: #999;">No membership plans configured.</p>
                     </div>
                 </div>
             `;
@@ -230,19 +189,16 @@
             const content = `
                 <div class="trainer-assignment">
                     <div class="assignment-form">
+                        <p style="text-align:center; padding: 1rem; color: #999;">Please add members and trainers first to assign.</p>
                         <label>Select Member:</label>
                         <select class="form-control">
-                            <option>John Doe</option>
-                            <option>Jane Smith</option>
-                            <option>Mike Wilson</option>
+                            <option>No members available</option>
                         </select>
                         <label>Select Trainer:</label>
                         <select class="form-control">
-                            <option>Sarah Johnson</option>
-                            <option>Tom Davis</option>
-                            <option>Lisa Anderson</option>
+                            <option>No trainers available</option>
                         </select>
-                        <button class="btn btn-admin" onclick="assignTrainer()">
+                        <button class="btn btn-admin" onclick="assignTrainer()" disabled>
                             <i class="fas fa-link"></i> Assign Trainer
                         </button>
                     </div>
@@ -258,19 +214,7 @@
                         <i class="fas fa-plus"></i> Add New Trainer
                     </button>
                     <div class="trainers-list">
-                        <div class="trainer-item">
-                            <div class="trainer-info">
-                                <i class="fas fa-user-tie"></i>
-                                <div>
-                                    <h4>Sarah Johnson</h4>
-                                    <p>Specialization: Weight Training | Experience: 5 years</p>
-                                </div>
-                            </div>
-                            <div class="trainer-actions">
-                                <button class="btn btn-small" onclick="editTrainer('Sarah')">Edit</button>
-                                <button class="btn btn-danger btn-small" onclick="removeTrainer('Sarah')">Remove</button>
-                            </div>
-                        </div>
+                        <p style="text-align:center; padding: 2rem; color: #999;">No trainers registered.</p>
                     </div>
                 </div>
             `;
@@ -285,19 +229,7 @@
                         <button class="btn btn-admin">Search</button>
                     </div>
                     <div class="members-list">
-                        <div class="member-item">
-                            <div class="member-info">
-                                <i class="fas fa-user"></i>
-                                <div>
-                                    <h4>John Doe</h4>
-                                    <p>Member ID: #001 | Plan: Premium | Status: Active</p>
-                                </div>
-                            </div>
-                            <div class="member-actions">
-                                <button class="btn btn-small" onclick="editMember('John')">Edit</button>
-                                <button class="btn btn-danger btn-small" onclick="removeMember('John')">Remove</button>
-                            </div>
-                        </div>
+                        <p style="text-align:center; padding: 2rem; color: #999;">No members found.</p>
                     </div>
                 </div>
             `;

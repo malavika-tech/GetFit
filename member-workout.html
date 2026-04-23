@@ -21,7 +21,7 @@
 
             <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>John Doe</span>
+                <span id="headerMemberName">Member</span>
             </div>
         </div>
     </header>
@@ -145,28 +145,17 @@
                     
                     <div class="workout-summary-row">
                         <div>Duration:</div>
-                        <div>45 minutes</div>
+                        <div id="workoutDuration">--</div>
                     </div>
                     <div class="workout-summary-row" style="margin-top: 15px;">
                         <div>Days per Week:</div>
-                        <div>4 days (Mon, Wed, Fri, Sat)</div>
+                        <div id="workoutDays">--</div>
                     </div>
                     
                     <div class="exercise-list-title">Exercise List:</div>
                     
-                    <div class="exercise-card">
-                        <i class="fas fa-check-circle exercise-icon"></i>
-                        <div class="exercise-text">Bench Press - 4 sets x 12 reps</div>
-                    </div>
-
-                    <div class="exercise-card">
-                        <i class="fas fa-check-circle exercise-icon"></i>
-                        <div class="exercise-text">Squats - 4 sets x 15 reps</div>
-                    </div>
-
-                    <div class="exercise-card">
-                        <i class="fas fa-check-circle exercise-icon"></i>
-                        <div class="exercise-text">Shoulder Press - 3 sets x 10 reps</div>
+                    <div id="exerciseContainer">
+                        <p style="text-align:center; padding: 2rem; color: #999;">No workout plan assigned yet.</p>
                     </div>
                 </div>
             </section>
@@ -182,28 +171,29 @@
 
         // Read assigned workout plan from localStorage (set by trainer)
         document.addEventListener('DOMContentLoaded', function() {
+            const memberData = JSON.parse(localStorage.getItem('memberData') || '{}');
+            if (memberData.fullName) {
+                document.getElementById('headerMemberName').textContent = memberData.fullName;
+            }
+
             const saved = localStorage.getItem('assignedWorkoutPlan');
             if (!saved) return;
 
             const plan = JSON.parse(saved);
 
             // Update duration and days per week
-            const rows = document.querySelectorAll('.workout-summary-row div:last-child');
-            if (rows[0]) rows[0].textContent = plan.duration;
-            if (rows[1]) rows[1].textContent = plan.daysPerWeek;
+            document.getElementById('workoutDuration').textContent = plan.duration;
+            document.getElementById('workoutDays').textContent = plan.daysPerWeek;
 
             // Rebuild exercise cards
-            const container = document.querySelector('.workout-plan-container');
-            const oldCards = container.querySelectorAll('.exercise-card');
-            oldCards.forEach(c => c.remove());
-
-            const titleEl = container.querySelector('.exercise-list-title');
+            const exerciseContainer = document.getElementById('exerciseContainer');
+            exerciseContainer.innerHTML = ''; // Clear "No plan" message
 
             plan.exercises.forEach(function(ex) {
                 const card = document.createElement('div');
                 card.className = 'exercise-card';
                 card.innerHTML = `<i class="fas fa-check-circle exercise-icon"></i><div class="exercise-text">${ex}</div>`;
-                container.appendChild(card);
+                exerciseContainer.appendChild(card);
             });
 
             // Show assigned date

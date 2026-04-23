@@ -22,7 +22,7 @@
 
                         <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>Sarah Johnson</span>
+                <span>Trainer</span>
             </div>
         </div>
     </header>
@@ -58,7 +58,7 @@
         <main class="dashboard-main">
             <!-- Dashboard Overview -->
             <section class="dashboard-overview">
-                <h2>Welcome back, Sarah!</h2>
+                <h2>Welcome back!</h2>
                 
                 <!-- Stats Cards -->
                 <div class="stats-grid">
@@ -68,8 +68,8 @@
                         </div>
                         <div class="stat-content">
                             <h3>Assigned Members</h3>
-                            <p class="stat-number">12</p>
-                            <span class="stat-change positive">3 new this week</span>
+                            <p class="stat-number">0</p>
+                            <span class="stat-change neutral">No new members</span>
                         </div>
                     </div>
 
@@ -79,8 +79,8 @@
                         </div>
                         <div class="stat-content">
                             <h3>Today's Sessions</h3>
-                            <p class="stat-number">5</p>
-                            <span class="stat-change neutral">2 completed</span>
+                            <p class="stat-number">0</p>
+                            <span class="stat-change neutral">None scheduled</span>
                         </div>
                     </div>
 
@@ -90,21 +90,12 @@
                         </div>
                         <div class="stat-content">
                             <h3>Goals Achieved</h3>
-                            <p class="stat-number">28</p>
-                            <span class="stat-change positive">+4 this month</span>
+                            <p class="stat-number">0</p>
+                            <span class="stat-change neutral">None yet</span>
                         </div>
                     </div>
 
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Average Rating</h3>
-                            <p class="stat-number">4.8</p>
-                            <span class="stat-change positive">From 45 reviews</span>
-                        </div>
-                    </div>
+
                 </div>
             </section>
         </main>
@@ -141,37 +132,7 @@
         function showMemberProfile(memberName) {
             const content = `
                 <div class="member-profile">
-                    <div class="profile-header">
-                        <i class="fas fa-user-circle" style="font-size: 4rem; color: #11998e;"></i>
-                        <h3>${memberName}</h3>
-                        <p>Member ID: #001</p>
-                    </div>
-                    <div class="profile-details">
-                        <div class="detail-group">
-                            <h4>Physical Stats</h4>
-                            <p>Weight: 75kg | Height: 175cm | BMI: 24.5</p>
-                            <p>Body Fat: 18% | Muscle Mass: 45kg</p>
-                        </div>
-                        <div class="detail-group">
-                            <h4>Fitness Goals</h4>
-                            <p>Primary: Weight Loss (Target: 70kg)</p>
-                            <p>Secondary: Improve Cardiovascular Health</p>
-                        </div>
-                        <div class="detail-group">
-                            <h4>Progress Summary</h4>
-                            <p>Weight Lost: 3kg in 4 weeks</p>
-                            <p>Workout Attendance: 85%</p>
-                            <p>Diet Plan Compliance: 90%</p>
-                        </div>
-                    </div>
-                    <div class="profile-actions">
-                        <button class="btn btn-trainer" onclick="editMemberProfile('${memberName}')">
-                            <i class="fas fa-edit"></i> Edit Profile
-                        </button>
-                        <button class="btn btn-trainer" onclick="viewFullProgress('${memberName}')">
-                            <i class="fas fa-chart-line"></i> View Progress
-                        </button>
-                    </div>
+                    <p style="text-align:center; padding: 2rem; color: #999;">No profile data available for this member.</p>
                 </div>
             `;
             openModal(`${memberName} - Profile`, content);
@@ -180,44 +141,7 @@
         function viewWorkoutPlan(memberName) {
             const content = `
                 <div class="workout-plan">
-                    <h4>Current Workout Plan - ${memberName}</h4>
-                    <div class="plan-details">
-                        <div class="exercise-item">
-                            <h5>Monday - Upper Body</h5>
-                            <ul>
-                                <li>Bench Press: 4 sets x 12 reps</li>
-                                <li>Shoulder Press: 3 sets x 10 reps</li>
-                                <li>Tricep Dips: 3 sets x 15 reps</li>
-                                <li>Lateral Raises: 3 sets x 12 reps</li>
-                            </ul>
-                        </div>
-                        <div class="exercise-item">
-                            <h5>Wednesday - Lower Body</h5>
-                            <ul>
-                                <li>Squats: 4 sets x 12 reps</li>
-                                <li>Deadlifts: 3 sets x 10 reps</li>
-                                <li>Lunges: 3 sets x 12 reps per leg</li>
-                                <li>Calf Raises: 4 sets x 15 reps</li>
-                            </ul>
-                        </div>
-                        <div class="exercise-item">
-                            <h5>Friday - Full Body</h5>
-                            <ul>
-                                <li>Pull-ups: 3 sets x max reps</li>
-                                <li>Push-ups: 3 sets x 15 reps</li>
-                                <li>Planks: 3 sets x 60 seconds</li>
-                                <li>Burpees: 3 sets x 10 reps</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="plan-actions">
-                        <button class="btn btn-trainer" onclick="updateWorkoutPlan('${memberName}')">
-                            <i class="fas fa-edit"></i> Update Plan
-                        </button>
-                        <button class="btn btn-trainer" onclick="printWorkoutPlan('${memberName}')">
-                            <i class="fas fa-print"></i> Print Plan
-                        </button>
-                    </div>
+                    <p style="text-align:center; padding: 2rem; color: #999;">No workout plan assigned to this member.</p>
                 </div>
             `;
             openModal(`Workout Plan - ${memberName}`, content);
@@ -226,60 +150,7 @@
         function viewDietPlan(memberName) {
             const content = `
                 <div class="diet-plan">
-                    <h4>Current Diet Plan - ${memberName}</h4>
-                    <div class="plan-details">
-                        <div class="meal-item">
-                            <h5>Breakfast (7:00 AM)</h5>
-                            <ul>
-                                <li>Oatmeal with berries and nuts</li>
-                                <li>Greek yogurt with honey</li>
-                                <li>Green tea</li>
-                                <li>Calories: ~450</li>
-                            </ul>
-                        </div>
-                        <div class="meal-item">
-                            <h5>Lunch (12:30 PM)</h5>
-                            <ul>
-                                <li>Grilled chicken breast (150g)</li>
-                                <li>Brown rice (1 cup)</li>
-                                <li>Mixed vegetables</li>
-                                <li>Salad with olive oil dressing</li>
-                                <li>Calories: ~550</li>
-                            </ul>
-                        </div>
-                        <div class="meal-item">
-                            <h5>Dinner (7:00 PM)</h5>
-                            <ul>
-                                <li>Grilled fish (200g)</li>
-                                <li>Quinoa (1 cup)</li>
-                                <li>Steamed vegetables</li>
-                                <li>Fresh fruit salad</li>
-                                <li>Calories: ~500</li>
-                            </ul>
-                        </div>
-                        <div class="meal-item">
-                            <h5>Snacks</h5>
-                            <ul>
-                                <li>Protein shake (post-workout)</li>
-                                <li>Apple with almond butter</li>
-                                <li>Mixed nuts (handful)</li>
-                                <li>Calories: ~300</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nutrition-summary">
-                        <h5>Daily Nutrition Summary</h5>
-                        <p>Total Calories: ~1800</p>
-                        <p>Protein: 150g | Carbs: 180g | Fat: 60g</p>
-                    </div>
-                    <div class="plan-actions">
-                        <button class="btn btn-trainer" onclick="updateDietPlan('${memberName}')">
-                            <i class="fas fa-edit"></i> Update Plan
-                        </button>
-                        <button class="btn btn-trainer" onclick="printDietPlan('${memberName}')">
-                            <i class="fas fa-print"></i> Print Plan
-                        </button>
-                    </div>
+                    <p style="text-align:center; padding: 2rem; color: #999;">No diet plan assigned to this member.</p>
                 </div>
             `;
             openModal(`Diet Plan - ${memberName}`, content);
@@ -293,9 +164,7 @@
                     <div class="form-group">
                         <label>Select Member:</label>
                         <select class="form-control">
-                            <option>John Doe</option>
-                            <option>Jane Smith</option>
-                            <option>Mike Wilson</option>
+                            <option>No members assigned</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -338,9 +207,7 @@
                     <div class="form-group">
                         <label>Select Member:</label>
                         <select class="form-control">
-                            <option>John Doe</option>
-                            <option>Jane Smith</option>
-                            <option>Mike Wilson</option>
+                            <option>No members assigned</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -383,9 +250,7 @@
                     <div class="form-group">
                         <label>Select Member:</label>
                         <select class="form-control">
-                            <option>John Doe</option>
-                            <option>Jane Smith</option>
-                            <option>Mike Wilson</option>
+                            <option>No members assigned</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -493,10 +358,7 @@
             closeModal();
         }
 
-        function setRating(rating) {
-            // Rating functionality
-            console.log('Rating:', rating);
-        }
+
 
         // Close modal when clicking outside
         window.onclick = function(event) {

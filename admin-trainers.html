@@ -192,6 +192,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="admin-assign-trainer.html">
+                            <i class="fas fa-user-plus"></i>
+                            Assign Trainer
+                        </a>
+                    </li>
+                    <li>
                         <a href="admin-settings.html">
                             <i class="fas fa-cog"></i>
                             Settings
@@ -229,32 +235,32 @@
                             <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
                             <div class="stat-content">
                                 <h3>Total Trainers</h3>
-                                <p class="stat-number">28</p>
-                                <span class="stat-change positive">+5 this month</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">No new trainers</span>
                             </div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="stat-content">
                                 <h3>Active Trainers</h3>
-                                <p class="stat-number">24</p>
-                                <span class="stat-change positive">+3 this month</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">None active</span>
                             </div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon"><i class="fas fa-ban"></i></div>
                             <div class="stat-content">
                                 <h3>Inactive Trainers</h3>
-                                <p class="stat-number">4</p>
-                                <span class="stat-change neutral">On leave</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">None inactive</span>
                             </div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
                             <div class="stat-content">
                                 <h3>New Trainers</h3>
-                                <p class="stat-number">5</p>
-                                <span class="stat-change positive">+18% growth</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">0% growth</span>
                             </div>
                         </div>
                     </div>
@@ -298,66 +304,7 @@
                                 </tr>
                             </thead>
                             <tbody id="trainersTableBody">
-                                <tr>
-                                    <td>T001</td>
-                                    <td>Alex Johnson</td>
-                                    <td>alex@email.com</td>
-                                    <td>+1 234-567-8910</td>
-                                    <td>Strength Training</td>
-                                    <td>15</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T001','Alex Johnson','alex@email.com','+1 234-567-8910','Strength Training','Active')" title="Edit"><i class="fas fa-pen"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>T002</td>
-                                    <td>Sarah Mitchell</td>
-                                    <td>sarah@email.com</td>
-                                    <td>+1 234-567-8911</td>
-                                    <td>Yoga &amp; Flexibility</td>
-                                    <td>12</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T002','Sarah Mitchell','sarah@email.com','+1 234-567-8911','Yoga &amp; Flexibility','Active')" title="Edit"><i class="fas fa-pen"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>T003</td>
-                                    <td>James Wilson</td>
-                                    <td>james@email.com</td>
-                                    <td>+1 234-567-8912</td>
-                                    <td>Cardio &amp; HIIT</td>
-                                    <td>18</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T003','James Wilson','james@email.com','+1 234-567-8912','Cardio &amp; HIIT','Active')" title="Edit"><i class="fas fa-pen"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>T004</td>
-                                    <td>Emma Davis</td>
-                                    <td>emma@email.com</td>
-                                    <td>+1 234-567-8913</td>
-                                    <td>Nutrition &amp; Diet</td>
-                                    <td>8</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T004','Emma Davis','emma@email.com','+1 234-567-8913','Nutrition &amp; Diet','Active')" title="Edit"><i class="fas fa-pen"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>T005</td>
-                                    <td>Michael Brown</td>
-                                    <td>michael@email.com</td>
-                                    <td>+1 234-567-8914</td>
-                                    <td>Personal Training</td>
-                                    <td>0</td>
-                                    <td><span class="status-badge inactive">Inactive</span></td>
-                                    <td>
-                                        <button class="btn btn-primary table-action-btn" onclick="openEditTrainerModal(this,'T005','Michael Brown','michael@email.com','+1 234-567-8914','Personal Training','Inactive')" title="Edit"><i class="fas fa-pen"></i></button>
-                                    </td>
-                                </tr>
+                                <!-- Trainers will be loaded here -->
                             </tbody>
                         </table>
                         <p id="noTrainersMsg" style="display:none; text-align:center; padding:2rem; color:#999;">No trainers match your search.</p>

@@ -21,7 +21,7 @@
 
             <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>John Doe</span>
+                <span id="headerMemberName">Member</span>
             </div>
         </div>
     </header>
@@ -141,7 +141,7 @@
                     <h1>Diet Plan</h1>
                     <div class="diet-plan-summary-row">
                         <div><span style="color:#666;">Daily Calories:</span></div>
-                        <div><strong id="dailyCalDisplay">2,200 kcal</strong></div>
+                        <div><strong id="dailyCalDisplay">-- kcal</strong></div>
                     </div>
                     <div class="meal-schedule-title">Meal Schedule:</div>
                     <div id="mealCardsContainer"></div>
@@ -168,24 +168,26 @@
         ];
 
         document.addEventListener('DOMContentLoaded', function() {
+            const memberData = JSON.parse(localStorage.getItem('memberData') || '{}');
+            if (memberData.fullName) {
+                document.getElementById('headerMemberName').textContent = memberData.fullName;
+            }
+
             const saved = localStorage.getItem('assignedDietPlan');
+            const container = document.getElementById('mealCardsContainer');
+            
+            if (!saved) {
+                document.getElementById('dailyCalDisplay').textContent = '-- kcal';
+                container.innerHTML = '<p style="text-align:center; padding: 2rem; color: #999;">No diet plan assigned yet.</p>';
+                return;
+            }
 
-            // Default meals if nothing assigned yet
-            const defaultMeals = [
-                { time: 'Breakfast (7:00 AM)', food: 'Oatmeal with fruits, Greek yogurt, honey', calories: '450' },
-                { time: 'Snack (10:00 AM)',    food: 'Protein shake, almonds',                   calories: '250' },
-                { time: 'Lunch (1:00 PM)',     food: 'Grilled chicken salad, brown rice',         calories: '550' },
-                { time: 'Snack (4:00 PM)',     food: 'Apple, peanut butter',                      calories: '200' },
-                { time: 'Dinner (7:00 PM)',    food: 'Salmon, vegetables, quinoa',                calories: '750' }
-            ];
-
-            const plan = saved ? JSON.parse(saved) : { dailyCalories: '2,200', meals: defaultMeals, assignedAt: null };
+            const plan = JSON.parse(saved);
 
             // Update daily calories
             document.getElementById('dailyCalDisplay').textContent = plan.dailyCalories + ' kcal';
 
             // Render meal cards
-            const container = document.getElementById('mealCardsContainer');
             container.innerHTML = '';
             plan.meals.forEach(function(meal, i) {
                 if (!meal.food) return;

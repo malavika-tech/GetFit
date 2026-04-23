@@ -22,7 +22,7 @@
 
             <div class="user-profile">
                 <i class="fas fa-user-circle"></i>
-                <span>Sarah Johnson</span>
+                <span>Trainer</span>
             </div>
         </div>
     </header>
@@ -190,6 +190,26 @@
 }
 </style>
 
+            <!-- Member Info Summary -->
+            <div style="background:#fff; border-radius:8px; padding:20px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                <h2 style="font-size:1.2rem; margin-bottom:15px; color:#333;">Member Information</h2>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; font-size:1rem;">
+                    <span style="color:#666;">Member Name:</span><strong id="dietMemberName">--</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; font-size:1rem;">
+                    <span style="color:#666;">Height:</span><strong id="dietMemberHeight">--</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; font-size:1rem;">
+                    <span style="color:#666;">Current Weight:</span><strong id="dietMemberWeight">--</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; font-size:1rem;">
+                    <span style="color:#666;">BMI:</span><strong id="dietMemberBmi">--</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:10px 0; font-size:1rem;">
+                    <span style="color:#666;">Fitness Goal:</span><strong id="dietMemberGoal">--</strong>
+                </div>
+            </div>
+
             <div class="diet-plan-container">
                 <h1>Diet Plan</h1>
                 <h2>Weight Loss & Muscle Gain</h2>
@@ -200,7 +220,7 @@
                 </div>
                 <div class="diet-plan-summary" style="border-bottom:none; margin-bottom: 15px;">
                     <div><span style="color:#666;">Daily Calories:</span></div>
-                    <div><strong><input type="text" value="2,200" style="text-align:right; border:none; border-bottom:1px dashed #ccc; width: 60px; font-weight:bold; font-size:1.1rem; outline:none; background:transparent;"> kcal</strong></div>
+                    <div><strong><input type="text" value="" placeholder="e.g. 2,200" style="text-align:right; border:none; border-bottom:1px dashed #ccc; width: 100px; font-weight:bold; font-size:1.1rem; outline:none; background:transparent;"> kcal</strong></div>
                 </div>
                 
                 <div class="meal-schedule-title">Meal Schedule:</div>
@@ -211,8 +231,8 @@
                         <span class="meal-time">Breakfast (7:00 AM)</span>
                     </div>
                     <div class="meal-right">
-                        <input type="text" class="meal-input" value="Oatmeal with fruits, Greek yogurt, honey" placeholder="Type food items...">
-                        <span class="meal-calories"><input type="text" value="450" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
+                        <input type="text" class="meal-input" value="" placeholder="Type food items...">
+                        <span class="meal-calories"><input type="text" value="" placeholder="0" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
                     </div>
                 </div>
 
@@ -222,8 +242,8 @@
                         <span class="meal-time">Snack (10:00 AM)</span>
                     </div>
                     <div class="meal-right">
-                        <input type="text" class="meal-input" value="Protein shake, almonds" placeholder="Type food items...">
-                        <span class="meal-calories"><input type="text" value="250" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
+                        <input type="text" class="meal-input" value="" placeholder="Type food items...">
+                        <span class="meal-calories"><input type="text" value="" placeholder="0" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
                     </div>
                 </div>
 
@@ -233,8 +253,8 @@
                         <span class="meal-time">Lunch (1:00 PM)</span>
                     </div>
                     <div class="meal-right">
-                        <input type="text" class="meal-input" value="Grilled chicken salad, brown rice" placeholder="Type food items...">
-                        <span class="meal-calories"><input type="text" value="550" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
+                        <input type="text" class="meal-input" value="" placeholder="Type food items...">
+                        <span class="meal-calories"><input type="text" value="" placeholder="0" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
                     </div>
                 </div>
 
@@ -244,8 +264,8 @@
                         <span class="meal-time">Snack (4:00 PM)</span>
                     </div>
                     <div class="meal-right">
-                        <input type="text" class="meal-input" value="Apple, peanut butter" placeholder="Type food items...">
-                        <span class="meal-calories"><input type="text" value="200" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
+                        <input type="text" class="meal-input" value="" placeholder="Type food items...">
+                        <span class="meal-calories"><input type="text" value="" placeholder="0" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
                     </div>
                 </div>
 
@@ -255,8 +275,8 @@
                         <span class="meal-time">Dinner (7:00 PM)</span>
                     </div>
                     <div class="meal-right">
-                        <input type="text" class="meal-input" value="Salmon, vegetables, quinoa" placeholder="Type food items...">
-                        <span class="meal-calories"><input type="text" value="750" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
+                        <input type="text" class="meal-input" value="" placeholder="Type food items...">
+                        <span class="meal-calories"><input type="text" value="" placeholder="0" style="width:40px; text-align:right; border:none; border-bottom:1px dashed #ccc; background:transparent; outline:none;"> calories</span>
                     </div>
                 </div>
 
@@ -282,8 +302,47 @@
     </div>
 
     <script>
+        const goalLabels = {
+            'weight-loss': 'Weight Loss', 'muscle-gain': 'Muscle Gain',
+            'endurance': 'Improve Endurance', 'strength': 'Build Strength',
+            'flexibility': 'Increase Flexibility', 'general': 'General Fitness'
+        };
+
+        function bmiCategory(bmi) {
+            if (bmi < 18.5) return 'Underweight';
+            if (bmi < 25)   return 'Normal';
+            if (bmi < 30)   return 'Overweight';
+            return 'Obese';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const d = JSON.parse(localStorage.getItem('memberData') || '{}');
+            const progressHistory = JSON.parse(localStorage.getItem('progressHistory') || '[]');
+            progressHistory.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+            const latestEntry   = progressHistory.length > 0 ? progressHistory[0] : null;
+            const regWeight     = parseFloat(d.weight) || 0;
+            const currentWeight = latestEntry ? parseFloat(latestEntry.weight) : regWeight;
+            const height        = parseFloat(d.height) || 0;
+
+            document.getElementById('dietMemberName').textContent   = d.fullName || 'Member';
+            document.getElementById('dietMemberHeight').textContent = height ? height + ' cm' : '--';
+            document.getElementById('dietMemberWeight').textContent = currentWeight ? currentWeight.toFixed(1) + ' kg' : '--';
+
+            if (height && currentWeight) {
+                const hm  = height / 100;
+                const bmi = (currentWeight / (hm * hm)).toFixed(1);
+                document.getElementById('dietMemberBmi').textContent =
+                    bmi + ' (' + bmiCategory(parseFloat(bmi)) + ')';
+            }
+
+            const goalLabel = goalLabels[d.fitnessGoal] || d.fitnessGoal || '--';
+            document.getElementById('dietMemberGoal').textContent = goalLabel;
+        });
+
         function assignDietPlan() {
-            const confirmation = "Assign this Custom Diet Plan to John Doe?\n\nThis will replace their current Diet plan.";
+            const d = JSON.parse(localStorage.getItem('memberData') || '{}');
+            const memberName = d.fullName || 'Member';
+            const confirmation = 'Assign this Custom Diet Plan to ' + memberName + '?\n\nThis will replace their current Diet plan.';
 
             if (confirm(confirmation)) {
                 // Collect daily calories
@@ -294,24 +353,24 @@
                 const mealCards = document.querySelectorAll('.meal-card');
                 const meals = [];
                 mealCards.forEach(function(card) {
-                    const timeEl = card.querySelector('.meal-time');
+                    const timeEl    = card.querySelector('.meal-time');
                     const foodInput = card.querySelector('.meal-input');
-                    const calInput = card.querySelector('.meal-calories input');
+                    const calInput  = card.querySelector('.meal-calories input');
                     meals.push({
-                        time: timeEl ? timeEl.textContent.trim() : '',
-                        food: foodInput ? foodInput.value.trim() : '',
-                        calories: calInput ? calInput.value.trim() : ''
+                        time:     timeEl     ? timeEl.textContent.trim()     : '',
+                        food:     foodInput  ? foodInput.value.trim()        : '',
+                        calories: calInput   ? calInput.value.trim()         : ''
                     });
                 });
 
                 const dietPlan = {
                     dailyCalories: dailyCalories,
-                    meals: meals,
-                    assignedAt: new Date().toLocaleDateString()
+                    meals:         meals,
+                    assignedAt:    new Date().toLocaleDateString()
                 };
                 localStorage.setItem('assignedDietPlan', JSON.stringify(dietPlan));
 
-                alert('Diet Plan assigned successfully to John Doe!');
+                alert('Diet Plan assigned successfully to ' + memberName + '!');
                 window.location.href = 'trainer-members.html';
             }
         }

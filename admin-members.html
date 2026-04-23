@@ -56,6 +56,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="admin-assign-trainer.html">
+                            <i class="fas fa-user-plus"></i>
+                            Assign Trainer
+                        </a>
+                    </li>
+                    <li>
                         <a href="admin-settings.html">
                             <i class="fas fa-cog"></i>
                             Settings
@@ -87,8 +93,8 @@
                             </div>
                             <div class="stat-content">
                                 <h3>Total Members</h3>
-                                <p class="stat-number">156</p>
-                                <span class="stat-change positive">+12 this month</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">No new members</span>
                             </div>
                         </div>
                         
@@ -98,8 +104,8 @@
                             </div>
                             <div class="stat-content">
                                 <h3>Active Members</h3>
-                                <p class="stat-number">142</p>
-                                <span class="stat-change positive">+8 this month</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">None active</span>
                             </div>
                         </div>
                         
@@ -109,8 +115,8 @@
                             </div>
                             <div class="stat-content">
                                 <h3>Pending Approval</h3>
-                                <p class="stat-number">8</p>
-                                <span class="stat-change neutral">Awaiting review</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">None pending</span>
                             </div>
                         </div>
                         
@@ -120,8 +126,8 @@
                             </div>
                             <div class="stat-content">
                                 <h3>New This Month</h3>
-                                <p class="stat-number">24</p>
-                                <span class="stat-change positive">+15% growth</span>
+                                <p class="stat-number">0</p>
+                                <span class="stat-change neutral">0% growth</span>
                             </div>
                         </div>
                     </div>
@@ -164,66 +170,7 @@
                                 </tr>
                             </thead>
                             <tbody id="membersTableBody">
-                                <tr>
-                                    <td>M001</td>
-                                    <td>John Doe</td>
-                                    <td>john@email.com</td>
-                                    <td>+1 234-567-8900</td>
-                                    <td>Yearly</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'John Doe')" title="Approve"><i class="fas fa-check"></i></button>
-                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'John Doe')" title="Reject"><i class="fas fa-times"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>M002</td>
-                                    <td>Jane Smith</td>
-                                    <td>jane@email.com</td>
-                                    <td>+1 234-567-8901</td>
-                                    <td>Monthly</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Jane Smith')" title="Approve"><i class="fas fa-check"></i></button>
-                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Jane Smith')" title="Reject"><i class="fas fa-times"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>M003</td>
-                                    <td>Mike Johnson</td>
-                                    <td>mike@email.com</td>
-                                    <td>+1 234-567-8902</td>
-                                    <td>Quarterly</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Mike Johnson')" title="Approve"><i class="fas fa-check"></i></button>
-                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Mike Johnson')" title="Reject"><i class="fas fa-times"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>M004</td>
-                                    <td>Sarah Wilson</td>
-                                    <td>sarah@email.com</td>
-                                    <td>+1 234-567-8903</td>
-                                    <td>Yearly</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Sarah Wilson')" title="Approve"><i class="fas fa-check"></i></button>
-                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Sarah Wilson')" title="Reject"><i class="fas fa-times"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>M005</td>
-                                    <td>Tom Brown</td>
-                                    <td>tom.brown@email.com</td>
-                                    <td>+1 234-567-8905</td>
-                                    <td>Monthly</td>
-                                    <td><span class="status-badge pending">Pending</span></td>
-                                    <td>
-                                        <button class="btn btn-success table-action-btn" onclick="approveMember(this, 'Tom Brown')" title="Approve"><i class="fas fa-check"></i></button>
-                                        <button class="btn btn-danger table-action-btn" onclick="rejectMember(this, 'Tom Brown')" title="Reject"><i class="fas fa-times"></i></button>
-                                    </td>
-                                </tr>
+                                <!-- Members will be loaded here -->
                             </tbody>
                         </table>
                         <p id="noMembersMsg" style="display:none; text-align:center; padding:2rem; color:#999;">No members match your search.</p>

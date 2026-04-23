@@ -350,11 +350,13 @@ body {
 }
 
 .form-group label {
-    display: flex;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #333 !important;
     align-items: center;
     gap: 0.5rem;
     font-weight: 600;
-    color: #333;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
 }
